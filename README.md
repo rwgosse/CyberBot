@@ -1,4 +1,6 @@
-# CyberBot
+******************
+CyberBot README.md
+******************
 
 ############
 Team Members
@@ -22,11 +24,11 @@ underscore first for internal items
 Project Folders
 ###############
 
-/application    the obvious
-/assets         CSS, javascript & media
-/data           some pictures to use
+/application    the obvious  
+/assets         CSS, javascript & media  
+/data           some pictures to use  
 
-Assumed: CI system folder is in ../system3
+Assumed: CI system folder is in ../system3  
 
 If you change the system folder configuration setting, your webapp will break
 when I try to test it on my system!
