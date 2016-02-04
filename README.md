@@ -5,6 +5,7 @@ CyberBot README.md
 ############
 Team Members
 ############
+
 - Chris Leclair: XCVG  
 - David (Li-Jen) Wang: dwang19  
 - Nancy Ra: nnanceraa  
@@ -13,6 +14,7 @@ Team Members
 ###########
 Conventions
 ###########
+
 Allman style  
 tab indentation  
 ucfirst (Upper case first) for classes and files  
