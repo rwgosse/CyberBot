@@ -1,4 +1,5 @@
 Newest changes at the top
 Format: MM/DD/YYYY HH:MM - comment  
 
+02/04/2016 14:20 - Added the starter package
 02/04/2016 14:05 - Initial Setup
