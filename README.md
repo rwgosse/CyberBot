@@ -1,19 +1,15 @@
 ******************
-CyberBot README.md
+#CyberBot README.md
 ******************
 
-############
-Team Members
-############
+##Team Members
 
 - Chris Leclair: XCVG  
 - David (Li-Jen) Wang: dwang19  
 - Nancy Ra: nnanceraa  
 - Richard Gosse: rwgosse  
 
-###########
-Conventions
-###########
+##Conventions
 
 Allman style  
 tab indentation  
@@ -22,9 +18,7 @@ lowercase for bame elsewhere
 words separated by underscore  
 underscore first for internal items  
 
-###############
-Project Folders
-###############
+##Project Folders
 
 /application    the obvious  
 /assets         CSS, javascript & media  
