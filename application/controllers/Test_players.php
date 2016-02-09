@@ -17,6 +17,15 @@ class Test_players extends CI_Controller {
             echo implode(" ", $row);
             echo "<br>";
         }
+        
+        echo "<br>";
+        echo implode(" ", $this->Players->first());
+        
+        echo "<br>";
+        echo implode(" ", $this->Players->last());
+        
+        echo "<br>";
+        echo implode(" ", $this->Players->get('George'));
     }
     
 }
