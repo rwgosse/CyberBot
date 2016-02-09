@@ -37,19 +37,19 @@ class Players extends CI_Model {
 	public function first()
 	{
             // get data from the database
-            $data = $this->db->get('players');
+            $data = $this->db->get('players')->result_array();
             
-            return $data->result_array()[0];
+            return $data[0];
 	}
 
 	// retrieve the last player
 	public function last()
 	{
             // get data from the database
-            $data = $this->db->get('players');
+            $data = $this->db->get('players')->result_array();
             
             $index = count($data) - 1;
-            return $data->result_array()[$index];
+            return $data[$index];
 	}
 
 }
