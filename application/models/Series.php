@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This is a model for players that grabs data from a MySQL database.
+ * This is a model for robot series that grabs data from a MySQL database.
  *
  * @author Chris
  */
