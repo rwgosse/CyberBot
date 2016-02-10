@@ -19,6 +19,15 @@ class Test_players extends CI_Controller {
         }
         
         echo "<br>";
+        
+        $all = $this->Players->get_all(array('peanuts >'=>'50'));
+        foreach($all as $row)
+        {
+            echo implode(" ", $row);
+            echo "<br>";
+        }
+        
+        echo "<br>";
         echo implode(" ", $this->Players->first());
         
         echo "<br>";
