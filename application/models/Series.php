@@ -14,7 +14,7 @@ class Series extends CI_Model {
 		parent::__construct();
 	}
 
-	// retrieve a single player
+	// retrieve a single series entry
 	public function get($which)
 	{
             // get data from the database
@@ -24,7 +24,7 @@ class Series extends CI_Model {
             return $data->result_array()[0];
 	}
 
-	// retrieve all of the players
+	// retrieve all of the series
 	public function all()
 	{
             // get data from the database
@@ -33,7 +33,7 @@ class Series extends CI_Model {
             return $data->result_array();
 	}
 
-	// retrieve the first player
+	// retrieve the first series
 	public function first()
 	{
             // get data from the database
@@ -42,7 +42,7 @@ class Series extends CI_Model {
             return $data[0];
 	}
 
-	// retrieve the last player
+	// retrieve the last series
 	public function last()
 	{
             // get data from the database
