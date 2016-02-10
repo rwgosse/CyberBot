@@ -24,8 +24,10 @@ class Test_players extends CI_Controller {
         echo "<br>";
         echo implode(" ", $this->Players->last());
         
+        echo "<br><br>";
+        echo implode(" ", $this->Players->get(array('player'=>'George')));
         echo "<br>";
-        echo implode(" ", $this->Players->get('George'));
+        echo implode(" ", $this->Players->get(array('peanuts'=>'200')));
     }
     
 }

@@ -18,7 +18,7 @@ class Players extends CI_Model {
 	public function get($which)
 	{
             // get data from the database
-            $data = $this->db->get_where('players',array('player'=>$which));
+            $data = $this->db->get_where('players',$which);
 
             // return the first and hopefully only record
             return $data->result_array()[0];
