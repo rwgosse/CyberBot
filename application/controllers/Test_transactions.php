@@ -19,6 +19,15 @@ class Test_transactions extends CI_Controller {
         }
         
         echo "<br>";
+        
+        $all = $this->Transactions->get_all(array('trans'=>'sell'));
+        foreach($all as $row)
+        {
+            echo implode(" ", $row);
+            echo "<br>";
+        }
+        
+        echo "<br>";
         echo implode(" ", $this->Transactions->first());
         
         echo "<br>";

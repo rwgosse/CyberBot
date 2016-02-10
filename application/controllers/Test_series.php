@@ -19,6 +19,15 @@ class Test_series extends CI_Controller {
         }
         
         echo "<br>";
+        
+        $all = $this->Series->get_all(array('value >='=>'50'));
+        foreach($all as $row)
+        {
+            echo implode(" ", $row);
+            echo "<br>";
+        }
+        
+        echo "<br>";
         echo implode(" ", $this->Series->first());
         
         echo "<br>";

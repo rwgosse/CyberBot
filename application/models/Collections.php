@@ -23,6 +23,16 @@ class Collections extends CI_Model {
             // return the first and hopefully only record
             return $data->result_array()[0];
 	}
+        
+        // retrieve all matching collection items
+        public function get_all($which)
+        {
+            // get data from the database
+            $data = $this->db->get_where('collections',$which);
+            
+            // return all records
+            return $data->result_array();
+        }
 
 	// retrieve all of the collection items
 	public function all()

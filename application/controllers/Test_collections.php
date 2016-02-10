@@ -19,6 +19,15 @@ class Test_collections extends CI_Controller {
         }
         
         echo "<br>";
+        
+        $all = $this->Collections->get_all(array('player'=>'Donald'));
+        foreach($all as $row)
+        {
+            echo implode(" ", $row);
+            echo "<br>";
+        }
+        
+        echo "<br>";
         echo implode(" ", $this->Collections->first());
         
         echo "<br>";
