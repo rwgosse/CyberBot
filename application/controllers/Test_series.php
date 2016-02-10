@@ -24,8 +24,10 @@ class Test_series extends CI_Controller {
         echo "<br>";
         echo implode(" ", $this->Series->last());
         
+        echo "<br><br>";
+        echo implode(" ", $this->Series->get(array('series'=>'13')));
         echo "<br>";
-        echo implode(" ", $this->Series->get('13'));
+        echo implode(" ", $this->Series->get(array('value'=>'20')));
     }
     
 }

@@ -24,8 +24,10 @@ class Test_collections extends CI_Controller {
         echo "<br>";
         echo implode(" ", $this->Collections->last());
         
+        echo "<br><br>";
+        echo implode(" ", $this->Collections->get(array('token'=>'1A2EE5')));
         echo "<br>";
-        echo implode(" ", $this->Collections->get('1A2EE5'));
+        echo implode(" ", $this->Collections->get(array('piece'=>'11b-2')));
     }
     
 }

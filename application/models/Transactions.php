@@ -18,7 +18,7 @@ class Transactions extends CI_Model {
 	public function get($which)
 	{
             // get data from the database
-            $data = $this->db->get_where('transactions',array('transaction_id'=>$which));
+            $data = $this->db->get_where('transactions',$which);
 
             // return the first and hopefully only record
             return $data->result_array()[0];

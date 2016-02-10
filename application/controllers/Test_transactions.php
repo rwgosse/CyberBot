@@ -24,8 +24,10 @@ class Test_transactions extends CI_Controller {
         echo "<br>";
         echo implode(" ", $this->Transactions->last());
         
+        echo "<br><br>";
+        echo implode(" ", $this->Transactions->get(array('transaction_id'=>'5')));
         echo "<br>";
-        echo implode(" ", $this->Transactions->get('5'));
+        echo implode(" ", $this->Transactions->get(array('player'=>'Henry','series'=>'22','trans'=>'sell')));
     }
     
 }
