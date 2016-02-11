@@ -5,6 +5,9 @@
  *
  * Default application controller
  *
+ * MY_Controller conventions:
+ *  Menubar
+ *  Render content
  * ------------------------------------------------------------------------
  */
 class Application extends CI_Controller {
@@ -31,6 +34,7 @@ class Application extends CI_Controller {
 	 */
 	function render()
 	{
+                $this->load->library('parser');
 		$this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'), true);
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 
