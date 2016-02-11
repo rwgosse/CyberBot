@@ -77,6 +77,7 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => '',
+        'port' => '',
 	'password' => '',
 	'database' => 'botcards',
 	'dbdriver' => 'mysqli',
