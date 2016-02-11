@@ -3,3 +3,20 @@ body {}
 #content {width:100%; margin-left:5% auto;margin-right:5% auto;}
 #footer {font-size: small; font-style:italic;text-align:center;}
 .row>div {margin-bottom:10px;}
+
+/* CSS for content containers (panes) */
+#content-container {
+    text-align: center;
+    background-color: gray;
+    
+}
+
+#content-left, #content-right {
+    display: inline-block;
+    width: 45%;
+    text-align: initial;
+    background-color: white;
+    margin: 1em;
+    padding: 0.5em;
+    vertical-align: top;
+}
