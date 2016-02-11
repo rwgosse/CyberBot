@@ -31,6 +31,7 @@ class Portfolio extends Application {
             //Change to a different player's portfolio to view
 
     }
+}
 
 /* End of file Portfolio.php */
 /* Location: application/controllers/Portfolio.php */
