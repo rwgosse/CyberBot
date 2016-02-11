@@ -1,9 +1,9 @@
            
-<form name="playerform" id="playerform" method="GET">
+<form name="playerform" id="playerform" method="GET" autocomplete="off">
     <span class="portfolio-label">Player: </span>
     <select onchange="playerform.submit()">
         {players}
-        <option value="{player}">{player}</option>
+        <option value="{player}" {selected}>{player}</option>
         {/players}
     </select>
 </form>

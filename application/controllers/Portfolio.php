@@ -33,6 +33,13 @@ class Portfolio extends Application {
         $players = array();
         foreach ($this->Players->all() as $record)
         {
+            $record['selected'] = NULL;
+            
+            if($record['player'] === $this->player)
+            {
+                $record['selected'] = 'selected="selected"';
+            }
+            
             $players[] = (array) $record;
         }
         $this->data['players'] = $players;
