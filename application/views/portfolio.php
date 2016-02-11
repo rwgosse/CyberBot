@@ -8,6 +8,8 @@
     </select>
 </form>
 
+<p>{debug}</p>
+
 <div id="content-container">
     
     <div id="content-left">
@@ -21,24 +23,14 @@
                 <th class="table-title">Series 26</th>
                 <th></th>
             </tr>
+            {series}
             <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>4</td>
-                <td class="table-title">Heads</td>
+                <td>{11}</td>
+                <td>{13}</td>
+                <td>{26}</td>
+                <td class="table-title">{piece}</td>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>4</td>
-                <td class="table-title">Bodies</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>4</td>
-                <td class="table-title">Legs</td>
-            </tr>
+            {/series}
         </table>
         
         <div>

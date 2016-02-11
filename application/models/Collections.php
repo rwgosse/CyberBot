@@ -33,6 +33,34 @@ class Collections extends CI_Model {
             // return all records
             return $data->result_array();
         }
+        
+        // retrieve a structured array of pieces and their quantity
+        public function get_pieces($which)
+        {
+            // get data from the database
+            $data = $this->db->get_where('collections',$which)->result_array();
+            
+            // we need to get an array of the form position:[piece:quantity]
+            $pieces = array
+            (
+                '0'=>array('11'=>0,'13'=>0,'26'=>0,'piece'=>'Heads'),
+                '1'=>array('11'=>0,'13'=>0,'26'=>0,'piece'=>'Bodies'),
+                '2'=>array('11'=>0,'13'=>0,'26'=>0,'piece'=>'Legs')
+            );
+            
+            // iterate through all data and count each piece type
+            foreach($data as $record)
+            {
+                $position = substr($record['piece'],-1);
+                $series = substr($record['piece'],0,2);
+                
+                //increment the correct piece
+                $pieces[$position][$series] += 1;
+            }
+            
+            return $pieces;
+            
+        }
 
 	// retrieve all of the collection items
 	public function all()

@@ -12,6 +12,8 @@ class Portfolio extends Application {
     function __construct()
     {
             parent::__construct();
+            $this->load->model('players');
+            $this->load->model('collections');
     }
 
     //-------------------------------------------------------------
@@ -19,9 +21,7 @@ class Portfolio extends Application {
     //-------------------------------------------------------------
 
     function index()
-    {
-        $this->load->model('Players');
-        
+    {   
         $this->data['title'] = 'Player Portfolio';
         $this->data['pagebody'] = 'portfolio';
         
@@ -29,9 +29,9 @@ class Portfolio extends Application {
         
         $this->player = 'Mickey';
         
-        //TODO: fill Player dropdown
+        //fill Player dropdown
         $players = array();
-        foreach ($this->Players->all() as $record)
+        foreach ($this->players->all() as $record)
         {
             $record['selected'] = NULL;
             
@@ -52,6 +52,17 @@ class Portfolio extends Application {
 
     function create_holdings_pane()
     {
+        $data_pieces = $this->collections->get_pieces(array('player'=>'Mickey'));
+
+        // fill holdings table
+        $series = array();
+        foreach ($data_pieces as $record)
+        {
+            $series[] = (array) $record;
+        }
+        $this->data['series'] = $series;
+        
+        // get number of peanuts
         
     }
     
