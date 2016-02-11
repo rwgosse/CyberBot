@@ -20,11 +20,12 @@ class Portfolio extends Application {
 
 	function index()
 	{
+            $this->data['title'] = 'Portfolio';
             $this->data['pagebody'] = 'portfolio'; 
             $this->render();
 	}
 
 }
 
-/* End of file Bingo.php */
-/* Location: application/controllers/Bingo.php */
+/* End of file Portfolio.php */
+/* Location: application/controllers/Portfolio.php */
