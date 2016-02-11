@@ -35,7 +35,7 @@
         
         <div>
             <span class="portfolio-label">Peanuts:</span>
-            <span id="peanuts">0</span>
+            <span id="peanuts">{peanuts}</span>
         </div>
         
     </div>

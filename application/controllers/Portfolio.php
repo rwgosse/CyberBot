@@ -63,6 +63,8 @@ class Portfolio extends Application {
         $this->data['series'] = $series;
         
         // get number of peanuts
+        $player_record = $this->players->get(array('player'=>$this->player));
+        $this->data['peanuts'] = $player_record['peanuts'];
         
     }
     
