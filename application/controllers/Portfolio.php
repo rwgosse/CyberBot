@@ -20,16 +20,37 @@ class Portfolio extends Application {
 
     function index()
     {
-        $this->data['title'] = 'Portfolio';
-        $this->data['pagebody'] = 'portfolio'; 
+        $this->load->model('Players');
+        
+        $this->data['title'] = 'Player Portfolio';
+        $this->data['pagebody'] = 'portfolio';
+        
+        //TODO: check player
+        
+        $this->player = 'Mickey';
+        
+        //TODO: fill Player dropdown
+        $players = array();
+        foreach ($this->Players->all() as $record)
+        {
+            $players[] = (array) $record;
+        }
+        $this->data['players'] = $players;
+        
+        $this->create_holdings_pane();
+        $this->create_activity_pane();
+        
         $this->render();
     }
 
-    function switchPortfolio() 
+    function create_holdings_pane()
     {
-
-            //Change to a different player's portfolio to view
-
+        
+    }
+    
+    function create_activity_pane()
+    {
+        
     }
 }
 

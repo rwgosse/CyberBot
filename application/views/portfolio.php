@@ -2,8 +2,9 @@
 <form name="playerform" id="playerform" method="GET">
     <span class="portfolio-label">Player: </span>
     <select onchange="playerform.submit()">
-        <option value="Mickey">Mickey</option>
-        <option value="Donald">Donald</option>
+        {players}
+        <option value="{player}">{player}</option>
+        {/players}
     </select>
 </form>
 
