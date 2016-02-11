@@ -66,7 +66,50 @@ body {}
     width: 45%;
     text-align: initial;
     background-color: white;
-    margin: 1em;
+    margin: 0.5em;
     padding: 0.5em;
     vertical-align: top;
+}
+
+/* CSS for portfolio page */
+
+#part-table 
+{
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#part-table, #part-table tr,th,td 
+{
+    border: 1px solid black;
+}
+
+#part-table th,td 
+{
+    width: 20%;
+}
+
+#part-table .table-title, .portfolio-label 
+{
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+#peanuts
+{
+    border: 1px solid black;
+    min-width:10em;
+    display: inline-block;
+    padding: 5px;
+}
+
+#purchases, #sales
+{
+    padding-left: 10px;        
+}
+
+#purchases p, #sales p
+{
+            
 }
