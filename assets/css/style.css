@@ -5,13 +5,15 @@ body {}
 .row>div {margin-bottom:10px;}
 
 /* CSS for content containers (panes) */
-#content-container {
+#content-container
+{
     text-align: center;
     background-color: gray;
     
 }
 
-#content-left, #content-right {
+#content-left, #content-right
+{
     display: inline-block;
     width: 45%;
     text-align: initial;
