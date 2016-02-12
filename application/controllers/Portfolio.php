@@ -14,6 +14,7 @@ class Portfolio extends Application {
             parent::__construct();
             $this->load->model('players');
             $this->load->model('collections');
+            $this->load->model('transactions');
     }
 
     //-------------------------------------------------------------
@@ -70,7 +71,27 @@ class Portfolio extends Application {
     
     function create_activity_pane()
     {
+        // get this player's purchases
+        $purchase_records = $this->transactions->get_all(array('player'=>$this->player,'trans'=>'buy'));
         
+        // turn purchase records into properly formatted array
+        $purchases = array();
+        foreach($purchase_records as $record)
+        {
+            $purchases[] = array('purchase_date'=>$record['datetime']);
+        }
+        $this->data['purchases'] = $purchases;
+        
+        // get this player's sales
+        $sales_records = $this->transactions->get_all(array('player'=>$this->player,'trans'=>'sell'));
+        
+        // turn sale records into properly formatted array
+        $sales = array();
+        foreach($sales_records as $record)
+        {
+            $sales[] = array('sale_date'=>$record['datetime'],'sale_series'=>$record['series']);
+        }
+        $this->data['sales'] = $sales;
     }
 }
 

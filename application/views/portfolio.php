@@ -45,13 +45,16 @@
             
         <h3>Purchases</h3>
         <div id="purchases">
-            <p>('2016.02.01-09:01:05', 'George', NULL, 'buy')</p>
-            <p>('2016.02.01-09:01:10', 'Mickey', NULL, 'buy')</p>
+            {purchases}
+            <p>{purchase_date} : Card Pack</p>
+            {/purchases}
         </div>
         
         <h3>Sales</h3>
         <div id="sales">
-            <p>('2016.02.01-09:01:15', 'George', '13', 'sell')</p>
+            {sales}
+            <p>{sale_date} : Series {sale_series}</p>
+            {/sales}
         </div>
         
     </div>        
