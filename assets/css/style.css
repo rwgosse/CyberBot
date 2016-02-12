@@ -12,6 +12,7 @@ body {}
 {
     float: right;
     margin: 5px;
+    position: relative;
 }
 
 #loginbox > *
@@ -34,6 +35,16 @@ body {}
 {
     line-height: initial;
     font-size: 10pt;
+}
+
+#loginbox #loginmessage
+{
+    position: absolute;
+    bottom: 30px;
+    right: 0px;
+    text-align: right;
+    width: 15em;
+    font-size: 0.75em;
 }
 
 /* CSS for dashboard page */

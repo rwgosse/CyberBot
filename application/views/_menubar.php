@@ -5,13 +5,13 @@
 ?>
 <h2>Cyberbots Web App</h2>
 <div id="loginbox">
+    <div id="loginmessage">{login_message}</div>
     <span id="logintext">{login_text}</span>
     <form name="loginform" id="loginform" autocomplete="off" method="POST">
         <input type="text" name="username" placeholder="Username" style="display:{login_visibility}">
         <input type="text" name="action" value="{login_action}" style="display:none">
         <input type="submit" value="{login_submit_text}">
-    </form>
-    {login_message}
+    </form>    
 </div>
 <ul class="nav">    
     {menudata}

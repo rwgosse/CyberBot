@@ -81,14 +81,19 @@ class Application extends CI_Controller {
                 {
                     // if user exists, log in by adding session data
                     $this->session->set_userdata(array('username'=>$username));
-                    $this->data['login_message'] = '';
+                    $this->data['login_message'] = 'Logged in successfully!';
                 }
                 else
                 {
                     // if user does not exist, display a message
                     $this->data['login_message'] = 'Invalid username!';
                 }
-            }           
+            }
+            else if(empty($username) && $action === 'login')
+            {
+                // if username is empty, prompt the user to type one in
+                $this->data['login_message'] = 'Please type a username.';
+            }
             
         }
         
@@ -104,7 +109,7 @@ class Application extends CI_Controller {
             if($this->session->userdata('username'))
             {
                 // if so, display logout button
-                $this->data['login_text'] = $this->session->userdata('username');
+                $this->data['login_text'] = 'Hi, ' . $this->session->userdata('username');
                 $this->data['login_submit_text'] = 'Logout';
                 $this->data['login_visibility'] = 'none';
                 $this->data['login_action'] = 'logout';
