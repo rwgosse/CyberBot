@@ -34,6 +34,20 @@ class Collections extends CI_Model {
             return $data->result_array();
         }
         
+        // retrieve selected columns matching player name in collection items
+        public function get_like($which, $like)
+        {
+            // get data from the database
+            $this->db->select('piece');
+            $this->db->where('player',$which);
+            $this->db->like('piece', $like, 'before');
+            
+            $data =  $this->db->get('collections');
+            
+            // return all records
+            return $data->result_array();
+        }
+        
         // retrieve a structured array of pieces and their quantity
         public function get_pieces($which)
         {
