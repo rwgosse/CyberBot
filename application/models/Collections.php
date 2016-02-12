@@ -48,6 +48,20 @@ class Collections extends CI_Model {
             return $data->result_array();
         }
         
+        // retrieve the first in selected column matching player name in collection items
+        public function get_like_first($which, $like)
+        {
+            // get data from the database
+            $this->db->select('piece');
+            $this->db->where('player',$which);
+            $this->db->like('piece', $like, 'before');
+            
+            $data =  $this->db->get('collections')->result_array();
+            
+            // return all records
+            return $data[0];
+        }
+        
         // retrieve a structured array of pieces and their quantity
         public function get_pieces($which)
         {
@@ -88,6 +102,7 @@ class Collections extends CI_Model {
 	// retrieve the first collection item
 	public function first()
 	{
+            $this->db->select('piece');
             // get data from the database
             $data = $this->db->get('collections')->result_array();
             
