@@ -14,17 +14,11 @@ body {}
     margin: 5px;
 }
 
-#loginbox > form
-{
-    margin: 0;
-    padding: 0.5em;
-}
-
-#loginbox > form label
+#loginbox > *
 {
     display: inline-block;
-    margin-bottom: 0;
-    cursor: initial;
+    margin: 0;
+    padding: 0.5em;
 }
 
 #loginbox > form input[type="text"]
@@ -40,20 +34,6 @@ body {}
 {
     line-height: initial;
     font-size: 10pt;
-}
-
-#loginbox > form > select
-{
-    width: 10em;
-}
-
-
-#loginbox > p
-{
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 0.5em;
-    font-size: 0.5em;
 }
 
 /* CSS for dashboard page */
