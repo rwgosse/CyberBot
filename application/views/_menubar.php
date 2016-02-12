@@ -11,11 +11,11 @@
         <input type="text" name="action" value="{login_action}" style="display:none">
         <input type="submit" value="{login_submit_text}">
     </form>
+    {login_message}
 </div>
 <ul class="nav">    
     {menudata}
     <li><a href="{link}">{name}</a></li>
     {/menudata}
 </ul>
-{debug}
 
