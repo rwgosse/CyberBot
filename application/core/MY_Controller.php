@@ -57,6 +57,10 @@ class Application extends CI_Controller {
             $this->data['menudata'] = $this->config->item('menu_choices')['menudata'];
             
             // TODO: create the login box
+            // temporary: create a "default" login box
+            $this->data['login_text'] = "";
+            $this->data['login_visibility'] = "inherit";
+            $this->data['login_submit_text'] = 'Login';
             
             // parse the menu bar
             $this->data['menubar'] = $this->parser->parse('_menubar', $this->data, true); //$this->config->item('menu_choices')
