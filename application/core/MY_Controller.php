@@ -63,17 +63,30 @@ class Application extends CI_Controller {
             // a bit of validation: check both username and action submitted
             if($this->session->userdata('username') && $action === 'logout')
             {
-                // if someone is logged in and  action is logout, log out
+                // if someone is logged in and action is logout, remove login session data
+                $this->session->unset_userdata('username');
+                $this->data['login_message'] = ['Logged out successfully!'];
                 
             }
             else if(!empty($username) && $action === 'login')
             {
                 // if username is not empty, and action is login, check against users
                 
-                // if user exists, log in
+                $this->load->model('players');            
+                if($username === $this->players->get(array('player'=>$username))['player'])
+                {
+                    // if user exists, log in by adding session data
+                    $this->session->set_userdata(array('username'=>$username));
+                    $this->data['login_message'] = '';
+                }
+                else
+                {
+                    // if user does not exist, display a message
+                    $this->data['login_message'] = 'Invalid username!';
+                }
             }
             
-            $this->data['debug'] = $action;
+            
         }
         
         /**
