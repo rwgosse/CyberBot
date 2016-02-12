@@ -23,10 +23,15 @@ class Application extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+                
+                // load parser library
+                $this->load->library('parser');
+                
+                // create data and error arrays
 		$this->data = array();
 		$this->data['title'] = 'CyberBot Web App';	// our default title
 		$this->errors = array();
-		$this->data['pageTitle'] = 'CyberBot';   // our default page
+		//$this->data['page_title'] = 'CyberBot';   // our default page
 	}
 
 	/**
@@ -34,14 +39,29 @@ class Application extends CI_Controller {
 	 */
 	function render()
 	{
-                $this->load->library('parser');
-		$this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'), true);
+                // create menu bar by calling function, then parse the page body
+                $this->create_menubar();
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 
 		// finally, build the browser page!
 		$this->data['data'] = &$this->data;
 		$this->parser->parse('_template', $this->data);
 	}
+        
+        /**
+	 * Create the menu bar, including the login box
+	 */
+        function create_menubar()
+        {
+            // get the menu bar data from config
+            $this->data['menudata'] = $this->config->item('menu_choices')['menudata'];
+            
+            // TODO: create the login box
+            
+            // parse the menu bar
+            $this->data['menubar'] = $this->parser->parse('_menubar', $this->data, true); //$this->config->item('menu_choices')
+            
+        }
 
 }
 
