@@ -8,11 +8,58 @@ body {}
 
 /* Header/menubar CSS */
 
+#loginbox
+{
+    float: right;
+    margin: 5px;
+}
 
+#loginbox > form
+{
+    margin: 0;
+    padding: 0.5em;
+}
+
+#loginbox > form label
+{
+    display: inline-block;
+    margin-bottom: 0;
+    cursor: initial;
+}
+
+#loginbox > form input[type="text"]
+{
+    width: 12em;
+    font-size: 0.75em;
+    height: 1em;
+    line-height: 1em;
+    margin-bottom: 0;
+}
+
+#loginbox > form input[type="submit"]
+{
+    line-height: initial;
+    font-size: 10pt;
+}
+
+#loginbox > form > select
+{
+    width: 10em;
+}
+
+
+#loginbox > p
+{
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0.5em;
+    font-size: 0.5em;
+}
 
 /* CSS for dashboard page */
 
-#dashboard {
+#dashboard
+{
     width: 98%;
     height: 650px;
     background: darkgray;
@@ -21,14 +68,16 @@ body {}
     display: inline-block;
 }
 
-.dashboardContainer {
+.dashboardContainer
+{
     width: 880px;
     margin: auto;
     height: 725px;
     
 }
 
-.statusContainer {
+.statusContainer
+{
     width: 410px;
     float: left;
     height: 575px;
@@ -37,7 +86,8 @@ body {}
     padding-left: 15px;
 }
 
-.playersContainer {
+.playersContainer
+{
     width: 410px;
     float: left;
     height: 575px;
@@ -46,7 +96,8 @@ body {}
     padding-left: 15px;
 }
 
-.rounds {
+.rounds 
+{
     background-color: white;
     margin: auto;
     float: left;
@@ -58,6 +109,7 @@ body {}
 }
 
 /* CSS for content containers (panes) */
+
 #content-container
 {
     text-align: center;
@@ -116,5 +168,5 @@ body {}
 
 #purchases p, #sales p
 {
-            
+                
 }
