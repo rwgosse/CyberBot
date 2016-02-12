@@ -8,8 +8,6 @@
     </select>
 </form>
 
-<p>{debug}</p>
-
 <div id="content-container">
     
     <div id="content-left">

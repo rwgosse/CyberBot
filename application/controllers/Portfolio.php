@@ -29,7 +29,7 @@ class Portfolio extends Application {
         // get list of players
         $players_records = $this->players->all();
         
-        //get player from GET, get player from session if it doesn't exist
+        //get player from GET, get player from session if it doesn't exist, default to first known player
         if($this->input->get('player'))
         {
             $this->player = $this->input->get('player');
@@ -42,8 +42,6 @@ class Portfolio extends Application {
         {
             $this->player = $players_records[0]['player'];
         }
-        
-        $this->data['debug'] = $this->player;
         
         // fill Player dropdown
         $players = array();

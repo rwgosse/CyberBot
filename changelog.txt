@@ -1,6 +1,7 @@
 Newest changes at the top
 Format: MM/DD/YYYY HH:MM - comment  
 
+02/11/2016 16:32 - Added Portfolio page, with style and functionality
 02/11/2016 09:41 - Fixed minor merge conflicts that the organization-user asked me to correct
 02/10/2016 23:02 - Created subcontrollers with code stubs, and homepage layout exists
 02/10/2016 10:49 - Created model classes for Players, Series, Transactions, and Collections
