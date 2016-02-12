@@ -56,11 +56,21 @@ class Application extends CI_Controller {
             // get the menu bar data from config
             $this->data['menudata'] = $this->config->item('menu_choices')['menudata'];
             
-            // TODO: create the login box
-            // temporary: create a "default" login box
-            $this->data['login_text'] = "";
-            $this->data['login_visibility'] = "inherit";
-            $this->data['login_submit_text'] = 'Login';
+            // check if someone is logged in
+            if($this->session->userdata('username'))
+            {
+                // if so, display logout button
+                $this->data['login_text'] = $this->session->userdata('username');
+                $this->data['login_submit_text'] = 'Logout';
+                $this->data['login_visibility'] = 'none';
+            }
+            else
+            {
+                // if not, display the login box
+                $this->data['login_text'] = '';
+                $this->data['login_submit_text'] = 'Login';
+                $this->data['login_visibility'] = 'initial';
+            }
             
             // parse the menu bar
             $this->data['menubar'] = $this->parser->parse('_menubar', $this->data, true); //$this->config->item('menu_choices')
