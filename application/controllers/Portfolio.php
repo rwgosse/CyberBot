@@ -26,21 +26,28 @@ class Portfolio extends Application {
         $this->data['title'] = 'Player Portfolio';
         $this->data['pagebody'] = 'portfolio';
         
+        // get list of players
+        $players_records = $this->players->all();
+        
         //get player from GET, get player from session if it doesn't exist
         if($this->input->get('player'))
         {
             $this->player = $this->input->get('player');
         }
-        else
+        else if($this->session->userdata('username'))
         {
             $this->player = $this->session->userdata('username');
+        }
+        else
+        {
+            $this->player = $players_records[0]['player'];
         }
         
         $this->data['debug'] = $this->player;
         
-        //fill Player dropdown
+        // fill Player dropdown
         $players = array();
-        foreach ($this->players->all() as $record)
+        foreach ($players_records as $record)
         {
             $record['selected'] = NULL;
             
