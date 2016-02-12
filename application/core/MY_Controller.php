@@ -39,14 +39,42 @@ class Application extends CI_Controller {
 	 */
 	function render()
 	{
-                // create menu bar by calling function, then parse the page body
-                $this->create_menubar();
-		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
+            // handle login/logout
+            $this->handle_login();
+            
+            // create menu bar by calling function, then parse the page body
+            $this->create_menubar();
+            $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 
-		// finally, build the browser page!
-		$this->data['data'] = &$this->data;
-		$this->parser->parse('_template', $this->data);
+            // finally, build the browser page!
+            $this->data['data'] = &$this->data;
+            $this->parser->parse('_template', $this->data);
 	}
+        
+        /**
+	 * Handle login/logout functionality
+	 */
+        function handle_login()
+        {
+            // get the login and action from get/post
+            $username = $this->input->get_post('username');
+            $action = $this->input->get_post('action');
+            
+            // a bit of validation: check both username and action submitted
+            if($this->session->userdata('username') && $action === 'logout')
+            {
+                // if someone is logged in and  action is logout, log out
+                
+            }
+            else if(!empty($username) && $action === 'login')
+            {
+                // if username is not empty, and action is login, check against users
+                
+                // if user exists, log in
+            }
+            
+            $this->data['debug'] = $action;
+        }
         
         /**
 	 * Create the menu bar, including the login box
@@ -63,6 +91,7 @@ class Application extends CI_Controller {
                 $this->data['login_text'] = $this->session->userdata('username');
                 $this->data['login_submit_text'] = 'Logout';
                 $this->data['login_visibility'] = 'none';
+                $this->data['login_action'] = 'logout';
             }
             else
             {
@@ -70,6 +99,7 @@ class Application extends CI_Controller {
                 $this->data['login_text'] = '';
                 $this->data['login_submit_text'] = 'Login';
                 $this->data['login_visibility'] = 'initial';
+                $this->data['login_action'] = 'login';
             }
             
             // parse the menu bar
