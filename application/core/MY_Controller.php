@@ -22,16 +22,20 @@ class Application extends CI_Controller {
 
 	function __construct()
 	{
-		parent::__construct();
-                
-                // load parser library
-                $this->load->library('parser');
-                
-                // create data and error arrays
-		$this->data = array();
-		$this->data['title'] = 'CyberBot Web App';	// our default title
-		$this->errors = array();
-		//$this->data['page_title'] = 'CyberBot';   // our default page
+            parent::__construct();
+
+            // load parser library
+            $this->load->library('parser');
+
+            // create data and error arrays
+            $this->data = array();
+            $this->data['title'] = 'CyberBot Web App';	// our default title
+            $this->errors = array();
+            //$this->data['page_title'] = 'CyberBot';   // our default page
+
+            // handle login/logout
+            $this->handle_login();
+ 
 	}
 
 	/**
@@ -39,9 +43,6 @@ class Application extends CI_Controller {
 	 */
 	function render()
 	{
-            // handle login/logout
-            $this->handle_login();
-            
             // create menu bar by calling function, then parse the page body
             $this->create_menubar();
             $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
@@ -56,6 +57,9 @@ class Application extends CI_Controller {
 	 */
         function handle_login()
         {
+            // display no message if there's nothing to say
+            $this->data['login_message'] = NULL;
+            
             // get the login and action from get/post
             $username = $this->input->get_post('username');
             $action = $this->input->get_post('action');
@@ -65,7 +69,7 @@ class Application extends CI_Controller {
             {
                 // if someone is logged in and action is logout, remove login session data
                 $this->session->unset_userdata('username');
-                $this->data['login_message'] = ['Logged out successfully!'];
+                $this->data['login_message'] = 'Logged out successfully!';
                 
             }
             else if(!empty($username) && $action === 'login')
@@ -84,8 +88,7 @@ class Application extends CI_Controller {
                     // if user does not exist, display a message
                     $this->data['login_message'] = 'Invalid username!';
                 }
-            }
-            
+            }           
             
         }
         
