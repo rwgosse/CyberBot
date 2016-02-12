@@ -26,9 +26,17 @@ class Portfolio extends Application {
         $this->data['title'] = 'Player Portfolio';
         $this->data['pagebody'] = 'portfolio';
         
-        //TODO: check player
+        //get player from GET, get player from session if it doesn't exist
+        if($this->input->get('player'))
+        {
+            $this->player = $this->input->get('player');
+        }
+        else
+        {
+            $this->player = $this->session->userdata('username');
+        }
         
-        $this->player = 'Mickey';
+        $this->data['debug'] = $this->player;
         
         //fill Player dropdown
         $players = array();
@@ -53,7 +61,7 @@ class Portfolio extends Application {
 
     function create_holdings_pane()
     {
-        $data_pieces = $this->collections->get_pieces(array('player'=>'Mickey'));
+        $data_pieces = $this->collections->get_pieces(array('player'=>$this->player));
 
         // fill holdings table
         $series = array();

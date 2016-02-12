@@ -1,7 +1,7 @@
            
-<form name="playerform" id="playerform" method="GET" autocomplete="off">
+<form name="playerform" id="playerform" autocomplete="off">
     <span class="portfolio-label">Player: </span>
-    <select onchange="playerform.submit()">
+    <select name="player" onchange="playerform.submit()">
         {players}
         <option value="{player}" {selected}>{player}</option>
         {/players}
