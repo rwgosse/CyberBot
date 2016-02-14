@@ -18,10 +18,14 @@ class Players extends CI_Model {
 	public function get($which)
 	{
             // get data from the database
-            $data = $this->db->get_where('players',$which);
+            $data = $this->db->get_where('players',$which)->result_array();
 
+            // return null if there are no matches
+            if(empty($data))
+                return NULL;
+            
             // return the first and hopefully only record
-            return $data->result_array()[0];
+            return $data[0];
 	}
         
         // retrieve all matching players
@@ -41,25 +45,6 @@ class Players extends CI_Model {
             $data = $this->db->get('players');
             
             return $data->result_array();
-	}
-
-	// retrieve the first player
-	public function first()
-	{
-            // get data from the database
-            $data = $this->db->get('players')->result_array();
-            
-            return $data[0];
-	}
-
-	// retrieve the last player
-	public function last()
-	{
-            // get data from the database
-            $data = $this->db->get('players')->result_array();
-            
-            $index = count($data) - 1;
-            return $data[$index];
 	}
 
 }
