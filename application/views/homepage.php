@@ -11,7 +11,13 @@
         </div>
         <div class="playersContainer">
             <h3>Players</h3>
-            {players}
+			{test}
+            <div class="homepagePlayers">
+				<a href="/Portfolio?player={player}">{player}</a><br/>
+				Peanuts: {peanuts}<br/>
+				Equity: {Equity}
+			</div>
+			{/test}
         </div>
        </div>
 </div>
