@@ -10,7 +10,7 @@
                 </tr>
                 <tr>
                     <td>
-                        {part0}
+                        <img src="/data/{part0}.jpeg" alt="head"/>
                     </td>
                     <td>
                         <select name="selecthead" onchange="assemblyform.submit()">
@@ -27,10 +27,10 @@
                 </tr>
                 <tr>
                     <td>
-                        {part1}
+                        <img src="/data/{part1}.jpeg" alt="body"/>
                     </td>
                     <td>
-                        <select name="selecctbodys" onchange="assemblyform.submit()">
+                        <select name="selectbody" onchange="assemblyform.submit()">
                             {bodys}
                                 <option value="{piece}" {selected}>{piece}</option>
                             {/bodys}
@@ -44,18 +44,18 @@
                 </tr>
                 <tr>
                     <td>
-                        {part2}
+                        <img src="/data/{part2}.jpeg" alt="legs"/> 
                     </td>
                     <td>
                         <select name="selectlegs" onchange="assemblyform.submit()">
-                            {legs}
+                            {leg}
                                 <option value="{piece}" {selected}>{piece}</option>
-                            {/legs}
+                            {/leg}
                         </select>
                     </td>
                 </tr>
             </table>
-            
+                <input type="submit" name='btn_submit' value='Assemble'/>
             </form>
         </div>
         <div id="preview" style="margin-left: 620px;">
@@ -67,14 +67,17 @@
                 </tr>
                 <tr>
                     <td>
-                        <img src="" alt="head"/>
+                        <img src="/data/{head}.jpeg" alt="head"/>
                         </br>
-                        <img src="" alt="body"/>
+                        <img src="/data/{body}.jpeg" alt="body"/>
                         </br>
-                        <img src="" alt="legs"/>
+                        <img src="/data/{legs}.jpeg" alt="legs"/>
                     </td>
                 </tr>
             </table>
+            <div style="color: red;">
+                {no_assemble}
+            </div>
         </div>
     </div>
 </div>
