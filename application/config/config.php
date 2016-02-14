@@ -6,9 +6,9 @@ if (!defined('BASEPATH'))
 // the menu basics (text navbar)
 $config['menu_choices'] = array(
 	'menudata' => array(
-		array('name' => 'Home', 'link' => '/Homepage'),
-		array('name' => 'Portfolio', 'link' => '/Portfolio'),
-                array('name' => 'Assembly', 'link' => '/Assembly'),
+		array('name' => 'Home', 'link' => '/'),
+		array('name' => 'Portfolio', 'link' => '/portfolio'),
+                array('name' => 'Assembly', 'link' => '/assembly'),
 	)
 );
 

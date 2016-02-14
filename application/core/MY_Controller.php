@@ -22,11 +22,20 @@ class Application extends CI_Controller {
 
 	function __construct()
 	{
-		parent::__construct();
-		$this->data = array();
-		$this->data['title'] = 'CyberBot Web App';	// our default title
-		$this->errors = array();
-		$this->data['pageTitle'] = 'CyberBot';   // our default page
+            parent::__construct();
+
+            // load parser library
+            $this->load->library('parser');
+
+            // create data and error arrays
+            $this->data = array();
+            $this->data['title'] = 'CyberBot Web App';	// our default title
+            $this->errors = array();
+            //$this->data['page_title'] = 'CyberBot';   // our default page
+
+            // handle login/logout
+            $this->handle_login();
+ 
 	}
 
 	/**
@@ -34,13 +43,92 @@ class Application extends CI_Controller {
 	 */
 	function render()
 	{
+            // create menu bar by calling function, then parse the page body
+            $this->create_menubar();
+            $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 		$this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'), true);
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 
-		// finally, build the browser page!
-		$this->data['data'] = &$this->data;
-		$this->parser->parse('_template', $this->data);
+            // finally, build the browser page!
+            $this->data['data'] = $this->data;
+            $this->parser->parse('_template', $this->data);
 	}
+        
+        /**
+	 * Handle login/logout functionality
+	 */
+        function handle_login()
+        {
+            // display no message if there's nothing to say
+            $this->data['login_message'] = NULL;
+            
+            // get the login and action from get/post
+            $username = $this->input->get_post('username');
+            $action = $this->input->get_post('action');
+            
+            // a bit of validation: check both username and action submitted
+            if($this->session->userdata('username') && $action === 'logout')
+            {
+                // if someone is logged in and action is logout, remove login session data
+                $this->session->unset_userdata('username');
+                $this->data['login_message'] = 'Logged out successfully!';
+                
+            }
+            else if(!empty($username) && $action === 'login')
+            {
+                // if username is not empty, and action is login, check against users
+                
+                $this->load->model('players');            
+                if($username === $this->players->get(array('player'=>$username))['player'])
+                {
+                    // if user exists, log in by adding session data
+                    $this->session->set_userdata(array('username'=>$username));
+                    $this->data['login_message'] = 'Logged in successfully!';
+                }
+                else
+                {
+                    // if user does not exist, display a message
+                    $this->data['login_message'] = 'Invalid username!';
+                }
+            }
+            else if(empty($username) && $action === 'login')
+            {
+                // if username is empty, prompt the user to type one in
+                $this->data['login_message'] = 'Please type a username.';
+            }
+            
+        }
+        
+        /**
+	 * Create the menu bar, including the login box
+	 */
+        function create_menubar()
+        {
+            // get the menu bar data from config
+            $this->data['menudata'] = $this->config->item('menu_choices')['menudata'];
+            
+            // check if someone is logged in
+            if($this->session->userdata('username'))
+            {
+                // if so, display logout button
+                $this->data['login_text'] = 'Hi, ' . $this->session->userdata('username');
+                $this->data['login_submit_text'] = 'Logout';
+                $this->data['login_visibility'] = 'none';
+                $this->data['login_action'] = 'logout';
+            }
+            else
+            {
+                // if not, display the login box
+                $this->data['login_text'] = '';
+                $this->data['login_submit_text'] = 'Login';
+                $this->data['login_visibility'] = 'initial';
+                $this->data['login_action'] = 'login';
+            }
+            
+            // parse the menu bar
+            $this->data['menubar'] = $this->parser->parse('_menubar', $this->data, true); //$this->config->item('menu_choices')
+            
+        }
 
 }
 

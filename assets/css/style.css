@@ -1,9 +1,56 @@
 /* CSS definition file containing site stylesheet */
+
+/* general CSS */
 body {}
 #content {width:100%; margin-left:5% auto;margin-right:5% auto;}
 #footer {font-size: small; font-style:italic;text-align:center;}
 .row>div {margin-bottom:10px;}
 
+/* Header/menubar CSS */
+
+#loginbox
+{
+    float: right;
+    margin: 5px;
+    position: relative;
+}
+
+#loginbox > *
+{
+    display: inline-block;
+    margin: 0;
+    padding: 0.5em;
+}
+
+#loginbox > form input[type="text"]
+{
+    width: 12em;
+    font-size: 0.75em;
+    height: 1em;
+    line-height: 1em;
+    margin-bottom: 0;
+}
+
+#loginbox > form input[type="submit"]
+{
+    line-height: initial;
+    font-size: 10pt;
+}
+
+#loginbox #loginmessage
+{
+    position: absolute;
+    bottom: 30px;
+    right: 0px;
+    text-align: right;
+    width: 15em;
+    font-size: 0.75em;
+}
+
+/* CSS for dashboard page */
+
+#dashboard
+{
 #dashboard {
     width: 98%;
     height: 650px;
@@ -13,14 +60,16 @@ body {}
     display: inline-block;
 }
 
-.dashboardContainer {
+.dashboardContainer
+{
     width: 880px;
     margin: auto;
     height: 725px;
     
 }
 
-.statusContainer {
+.statusContainer
+{
     width: 410px;
     float: left;
     height: 575px;
@@ -29,7 +78,8 @@ body {}
     padding-left: 15px;
 }
 
-.playersContainer {
+.playersContainer
+{
     width: 410px;
     float: left;
     height: 575px;
@@ -38,7 +88,8 @@ body {}
     padding-left: 15px;
 }
 
-.rounds {
+.rounds 
+{
     background-color: white;
     margin: auto;
     float: left;
@@ -50,6 +101,7 @@ body {}
 }
 
 /* CSS for content containers (panes) */
+
 #content-container
 {
     text-align: center;
@@ -108,5 +160,5 @@ body {}
 
 #purchases p, #sales p
 {
-            
+                
 }
