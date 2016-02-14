@@ -46,8 +46,6 @@ class Application extends CI_Controller {
             // create menu bar by calling function, then parse the page body
             $this->create_menubar();
             $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
-		$this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'), true);
-		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 
             // finally, build the browser page!
             $this->data['data'] = $this->data;
