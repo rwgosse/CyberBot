@@ -1,6 +1,7 @@
 Newest changes at the top
 Format: MM/DD/YYYY HH:MM - comment  
 
+02/14/2016 21:14 - Bot Assembly page completed
 02/13/2016 17:12 - Added equity function to player model
 02/12/2016 15:06 - Implemented login functionality using CI sessions
 02/11/2016 09:25 - Removed development file from tracking.
