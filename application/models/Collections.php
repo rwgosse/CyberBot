@@ -118,5 +118,13 @@ class Collections extends CI_Model {
             $index = count($data) - 1;
             return $data[$index];
 	}
-
+        
+        public function all_name()
+        {
+            $this->db->select('player');
+            
+            $data = $this->db->get('collections');
+            return $data->result_array();
+        }
+        
 }

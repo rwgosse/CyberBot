@@ -55,7 +55,7 @@
                     </td>
                 </tr>
             </table>
-            <input type="submit" name="submit" value="Assemble">
+            
             </form>
         </div>
         <div id="preview" style="margin-left: 620px;">
