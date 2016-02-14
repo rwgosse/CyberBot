@@ -1,1 +1,0 @@
-<img src="/data/{piece}.jpeg" alt="head" id='head_image'/>
