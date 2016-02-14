@@ -47,6 +47,7 @@ class Assembly extends Application {
         //head dropdown
         $head_pieces = $this->collections->get_like($this->player, '0');
         
+        //
         if ($head_pieces == NULL)
         {
             $this->data['part0'] = 'placeholder_head';
@@ -132,18 +133,21 @@ class Assembly extends Application {
 
     function completed_bot() {
 
-        //Assembly page showing the fully built Bot
+        //set the no_assemble place holder to blank
         $this->data['no_assemble'] = '';
         
+        //get all the query strings
         $head = $this->input->get('selecthead');
         $body = $this->input->get('selectbody');
         $legs = $this->input->get('selectlegs');
         
+        //if Assemble button is submitted  then display bot parts
         if ($this->input->get('btn_submit') === 'Assemble')
         {
-            if($this->data['part1'] === 'placeholder_body')
+            //if player doesnt have a bot part then display error message
+            if($this->data['part0'] === 'placeholder_head' || $this->data['part1'] === 'placeholder_body' || $this->data['part2'] === 'placeholder_legs')
             {
-                $this->data['no_assemble'] = 'Cannot build your bot.';
+                $this->data['no_assemble'] = 'Sorry you need more pieces, we cannot build your bot.';
             }
             else
             {
