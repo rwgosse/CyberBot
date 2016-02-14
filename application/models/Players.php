@@ -28,6 +28,19 @@ class Players extends CI_Model {
             return $data[0];
 	}
         
+        // retrieves the equity of a player
+        public function equity($player)
+        {
+            // get data from the database
+            $data = $this->db->get_where('collections',array('player'=>$player))->result_array();
+            
+            // each row is a piece, so count the rows
+            $count = count($data);
+            
+            // each piece is worth 1 peanut, so just return the count
+            return $count;
+        }
+        
         // retrieve all matching players
         public function get_all($which)
         {
