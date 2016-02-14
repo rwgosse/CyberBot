@@ -47,11 +47,12 @@ class Assembly extends Application {
         //head dropdown
         $head_pieces = $this->collections->get_like($this->player, '0');
         
-        //
+        //if player doesnt have pieces then show placeholder
         if ($head_pieces == NULL)
         {
             $this->data['part0'] = 'placeholder_head';
         }
+        //if player has a pieces then show first in array
         else
         {
             $first_head = $this->collections->get_like_first($this->player, '0');
