@@ -2,16 +2,22 @@
     <h1>Dashboard</h1>
        <div class="dashboardContainer"> 
         <div class="statusContainer">
-            <h3>Game Status</h3>
+            <h3>Game Status: Round #1</h3>
             <div class="rounds">
-                <p>Round #1</p>
                 <div class="displayStatus">
+					{piecedisplay}
                 </div>
             </div>
         </div>
         <div class="playersContainer">
             <h3>Players</h3>
-            {players}
+			{test}
+            <div class="homepagePlayers">
+				<a href="/Portfolio?player={player}">{player}</a><br/><br/>
+				Peanuts: {peanuts}<br/><br/>
+				Equity: {equity}<br/>
+			</div>
+			{/test}
         </div>
        </div>
 </div>

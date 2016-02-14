@@ -127,4 +127,17 @@ class Collections extends CI_Model {
             return $data->result_array();
         }
         
+	
+	public function distinct_all()
+	{
+            // get data from the database
+		$this->db->select('piece');
+		$this->db->distinct();
+		
+		
+        $data = $this->db->get('collections');
+            
+            return $data->result_array();
+	}
+	
 }
