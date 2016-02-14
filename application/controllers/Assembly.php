@@ -33,7 +33,7 @@ class Assembly extends Application {
         } 
         else 
         {
-            redirect('/homepage');
+            redirect('/');
         }
         
         $this->candidate_pieces();

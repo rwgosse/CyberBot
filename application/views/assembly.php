@@ -10,7 +10,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <img src="/data/{part0}.jpeg" alt="head"/>
+                        <img src="../data/{part0}.jpeg" alt="head"/>
                     </td>
                     <td>
                         <select name="selecthead" onchange="assemblyform.submit()">
@@ -27,7 +27,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <img src="/data/{part1}.jpeg" alt="body"/>
+                        <img src="../data/{part1}.jpeg" alt="body"/>
                     </td>
                     <td>
                         <select name="selectbody" onchange="assemblyform.submit()">
@@ -44,7 +44,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <img src="/data/{part2}.jpeg" alt="legs"/> 
+                        <img src="../data/{part2}.jpeg" alt="legs"/> 
                     </td>
                     <td>
                         <select name="selectlegs" onchange="assemblyform.submit()">
@@ -67,11 +67,11 @@
                 </tr>
                 <tr>
                     <td>
-                        <img src="/data/{head}.jpeg" alt="head"/>
+                        <img src="../data/{head}.jpeg" alt="head"/>
                         </br>
-                        <img src="/data/{body}.jpeg" alt="body"/>
+                        <img src="../data/{body}.jpeg" alt="body"/>
                         </br>
-                        <img src="/data/{legs}.jpeg" alt="legs"/>
+                        <img src="../data/{legs}.jpeg" alt="legs"/>
                     </td>
                 </tr>
             </table>
