@@ -1,6 +1,9 @@
 Newest changes at the top
 Format: MM/DD/YYYY HH:MM - comment  
 
+02/14/2016 21:20 - Updated changelog
+02/14/2016 21:20 - Fixed commenting
+02/14/2016 21:14 - Bot Assembly page completed
 02/13/2016 21:02 - Homepage is now complete:
 					-Player's name, peanuts, and equity now display and iterate
 					 properly

@@ -26,20 +26,15 @@ class Assembly extends Application {
         // this is the view we want shown
         $this->data['pagebody'] = 'assembly';
         
-        //Gets the first head piece for the current player
-        $head_part = $this->collections->get_like_first('Donald', '0');
-        $cell0 = $this->parser->parse('_cell', (array) $head_part, true);
-        $this->data['part0'] = $cell0;
-        
-        //Gets the first body piece for the current player
-        $body_part = $this->collections->get_like_first('Donald', '1');
-        $cell1 = $this->parser->parse('_cell', (array) $body_part, true);
-        $this->data['part1'] = $cell1;
-        
-        //Gets the first legs piece for the current player
-        $legs_part = $this->collections->get_like_first('Donald', '2');
-        $cell2 = $this->parser->parse('_cell', (array) $legs_part, true);
-        $this->data['part2'] = $cell2;
+        //get player from session if it doesn't exist, redirect to homepage
+        if($this->session->userdata('username'))
+        {
+            $this->player = $this->session->userdata('username');
+        } 
+        else 
+        {
+            redirect('/homepage');
+        }
         
         $this->candidate_pieces();
         $this->completed_bot();
@@ -50,15 +45,29 @@ class Assembly extends Application {
     function candidate_pieces() 
     {
         //head dropdown
-        $head_pieces = $this->collections->get_like('Donald', '0');
+        $head_pieces = $this->collections->get_like($this->player, '0');
+        
+        //if player doesnt have pieces then show placeholder
+        if ($head_pieces == NULL)
+        {
+            $this->data['part0'] = 'placeholder_head';
+        }
+        //if player has a pieces then show first in array
+        else
+        {
+            $first_head = $this->collections->get_like_first($this->player, '0');
+            $this->data['part0'] = $first_head['piece'];
+        }
+        
         $heads = array();
         
         foreach ($head_pieces as $head)
         {
            $head['selected'] = NULL;
-           if($head['piece'] === $this->collections)
+           if($head['piece'] === $this->input->get('selecthead'))
             {
                 $head['selected'] = 'selected="selected"';
+                $this->data['part0'] = $head['piece'];
             }
             $heads[] = (array) $head;
         }
@@ -66,42 +75,88 @@ class Assembly extends Application {
         $this->data['heads'] = $heads;
         
         //body dropdown
-        $body_pieces = $this->collections->get_like('Donald', '1');
+        $body_pieces = $this->collections->get_like($this->player, '1');
+        
+         if ($body_pieces == NULL)
+        {
+            $this->data['part1'] = 'placeholder_body';
+        }
+        else
+        {
+            $first_body = $this->collections->get_like_first($this->player, '1');
+            $this->data['part1'] = $first_body['piece'];
+        }
+        
         $bodys = array();
         
         foreach ($body_pieces as $body)
         {
            $body['selected'] = NULL;
-           if($body['piece'] === $this->collections)
+           if($body['piece'] == $this->input->get('selectbody'))
             {
                 $head['selected'] = 'selected="selected"';
+                $this->data['part1'] = $body['piece'];
             }
+            
             $bodys[] = (array) $body;
         }
         
         $this->data['bodys'] = $bodys;
         
         //legs dropdown
-        $leg_pieces = $this->collections->get_like('Donald', '2');
+        $leg_pieces = $this->collections->get_like($this->player, '2');
+        
+         if ($leg_pieces == NULL)
+        {
+            $this->data['part2'] = 'placeholder_body';
+        }
+        else
+        {
+            $first_legs = $this->collections->get_like_first($this->player, '2');
+            $this->data['part2'] = $first_legs['piece'];
+        }
+        
         $legs = array();
         
         foreach ($leg_pieces as $leg)
         {
            $leg['selected'] = NULL;
-           if($leg['piece'] === $this->collections)
+           if($leg['piece'] === $this->input->get('selectlegs'))
             {
                 $leg['selected'] = 'selected="selected"';
+                $this->data['part2'] = $leg['piece'];
             }
             $legs[] = (array) $leg;
         }
         
-        $this->data['legs'] = $legs;
+        $this->data['leg'] = $legs;
     }
 
     function completed_bot() {
 
-        //Assembly page showing the fully built Bot
+        //set the no_assemble place holder to blank
+        $this->data['no_assemble'] = '';
         
+        //get all the query strings
+        $head = $this->input->get('selecthead');
+        $body = $this->input->get('selectbody');
+        $legs = $this->input->get('selectlegs');
+        
+        //if Assemble button is submitted  then display bot parts
+        if ($this->input->get('btn_submit') === 'Assemble')
+        {
+            //if player doesnt have a bot part then display error message
+            if($this->data['part0'] === 'placeholder_head' || $this->data['part1'] === 'placeholder_body' || $this->data['part2'] === 'placeholder_legs')
+            {
+                $this->data['no_assemble'] = 'Sorry you need more pieces, we cannot build your bot.';
+            }
+            else
+            {
+                $this->data['head'] = $head;
+                $this->data['body'] = $body;
+                $this->data['legs'] = $legs;
+            }
+        } 
     }
 
 }
