@@ -26,9 +26,6 @@ class Assembly extends Application {
         // this is the view we want shown
         $this->data['pagebody'] = 'assembly';
         
-        // get list of players
-        $players_records = $this->players->all();
-        
         //get player from session if it doesn't exist, redirect to homepage
         if($this->session->userdata('username'))
         {
@@ -38,7 +35,6 @@ class Assembly extends Application {
         {
             redirect('/homepage');
         }
-        
         
         $this->candidate_pieces();
         $this->completed_bot();
@@ -51,7 +47,15 @@ class Assembly extends Application {
         //head dropdown
         $head_pieces = $this->collections->get_like($this->player, '0');
         
-        $this->data['part0'] = NULL;
+        if ($head_pieces == NULL)
+        {
+            $this->data['part0'] = 'placeholder_head';
+        }
+        else
+        {
+            $first_head = $this->collections->get_like_first($this->player, '0');
+            $this->data['part0'] = $first_head['piece'];
+        }
         
         $heads = array();
         
@@ -71,7 +75,15 @@ class Assembly extends Application {
         //body dropdown
         $body_pieces = $this->collections->get_like($this->player, '1');
         
-        $this->data['part1'] = NULL;
+         if ($body_pieces == NULL)
+        {
+            $this->data['part1'] = 'placeholder_body';
+        }
+        else
+        {
+            $first_body = $this->collections->get_like_first($this->player, '1');
+            $this->data['part1'] = $first_body['piece'];
+        }
         
         $bodys = array();
         
@@ -92,7 +104,15 @@ class Assembly extends Application {
         //legs dropdown
         $leg_pieces = $this->collections->get_like($this->player, '2');
         
-        $this->data['part2'] = NULL;
+         if ($leg_pieces == NULL)
+        {
+            $this->data['part2'] = 'placeholder_body';
+        }
+        else
+        {
+            $first_legs = $this->collections->get_like_first($this->player, '2');
+            $this->data['part2'] = $first_legs['piece'];
+        }
         
         $legs = array();
         
@@ -107,14 +127,31 @@ class Assembly extends Application {
             $legs[] = (array) $leg;
         }
         
-        $this->data['legs'] = $legs;
+        $this->data['leg'] = $legs;
     }
 
     function completed_bot() {
 
         //Assembly page showing the fully built Bot
-        //$this->input->
+        $this->data['no_assemble'] = '';
         
+        $head = $this->input->get('selecthead');
+        $body = $this->input->get('selectbody');
+        $legs = $this->input->get('selectlegs');
+        
+        if ($this->input->get('btn_submit') === 'Assemble')
+        {
+            if($this->data['part1'] === 'placeholder_body')
+            {
+                $this->data['no_assemble'] = 'Cannot build your bot.';
+            }
+            else
+            {
+                $this->data['head'] = $head;
+                $this->data['body'] = $body;
+                $this->data['legs'] = $legs;
+            }
+        } 
     }
 
 }
