@@ -89,5 +89,17 @@ class Collections extends CI_Model {
             $index = count($data) - 1;
             return $data[$index];
 	}
-
+	
+	public function distinct_all()
+	{
+            // get data from the database
+		$this->db->select('piece');
+		$this->db->distinct();
+		
+		
+        $data = $this->db->get('collections');
+            
+            return $data->result_array();
+	}
+	
 }

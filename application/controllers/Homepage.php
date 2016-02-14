@@ -15,6 +15,7 @@ class Homepage extends Application {
 	{
 		parent::__construct();
 		$this->load->model('players');
+		$this->load->model('collections');
 	}
 
 	//-------------------------------------------------------------
@@ -28,32 +29,36 @@ class Homepage extends Application {
 		$this->data['pagebody'] = 'homepage';	// this is the view we want shown
 		// build the list of authors, to pass on to our view
 
+		//use the collections::all() method and put it into the allpieces variable
+		$allpieces = $this->collections->distinct_all();
+		$results = ''; 
+		foreach ($allpieces as $row)
+		{
+			$results .= $this->parser->parse('_homepagecell', $row, true);
+		}	
+		$this->data['piecedisplay'] = $results; 
+		//calls the welcome_players function
 		$this->welcome_players();
+		//renders the page
 		$this->render();
 	}
 
 
-        private function welcome_players()
-        {
-			//get all the players from our model
-			$players = $this->players->all(); 
-			
-			
-			$players_array = array ();
-			foreach ($players as $player)
-			{
-				$players_array[] = (array) $player;
-			}
-			$this->data['test'] = $players_array; 
-        }
-        
-        function goToPortfolio() 
+		private function welcome_players()
 	{
+		//get all the players from our model
+		$players = $this->players->all(); 
+
 		
-                //Homepage panel that displays other players and when clicked, will go to their portfolio
-            
+		$players_array = array ();
+		foreach ($players as $player)
+		{
+			$player['equity'] = $this->players->equity($player['player']);
+			$players_array[] = (array) $player;
+		}
+		$this->data['test'] = $players_array; 
 	}
-        
+
 }
 
 /* End of file Homepage.php */
