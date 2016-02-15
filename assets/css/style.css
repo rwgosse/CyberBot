@@ -1,11 +1,40 @@
 /* CSS definition file containing site stylesheet */
 
 /* general CSS */
-body {}
-#content {width:100%; margin-left:5% auto;margin-right:5% auto;}
-#footer {font-size: small; font-style:italic;text-align:center;}
+body {
+	font-family: 'Josefin Slab', serif;
+	background-image: url("/assets/images/background.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	
+}
+#content 
+{
+	width:100%; 
+	margin-left:5% auto;
+	margin-right:5% auto;
+}
+
+#footer 
+{
+	font-size: medium; 
+	font-style:italic;
+	text-align:center;
+	color: white;
+	height:100px;
+	margin-top: 50px;
+}
 .row>div {margin-bottom:10px;}
 
+.container
+{
+	position: relative;
+	min-height: 100%;
+}
+#content
+{
+	color: white;
+}
 /* Header/menubar CSS */
 
 #loginbox
@@ -57,6 +86,8 @@ body {}
     margin: auto;
     padding: 10px;
     display: inline-block;
+	box-shadow:0 0 20px aquamarine;
+	color: black;
 }
 
 .dashboardContainer
@@ -64,7 +95,6 @@ body {}
     width: 880px;
     margin: auto;
     min-height: 725px;
-    
 }
 
 .statusContainer
@@ -75,6 +105,7 @@ body {}
     background-color: lightgray;
     margin-right: 15px;
     padding-left: 15px;
+	box-shadow:0 0 20px orange;
 }
 
 .playersContainer
@@ -85,6 +116,9 @@ body {}
     background-color: lightgray;
     margin-left: 15px; 
     padding-left: 15px;
+	box-shadow:0 0 20px purple;
+	font-family: 'Josefin Slab', serif;
+	font-weight: bold;
 }
 
 .rounds 
@@ -99,6 +133,8 @@ body {}
     margin-right: 15px;
 	margin-bottom: 25px;
 	padding-top: 25px;
+	box-shadow:0 0 20px green;
+	font-weight: bold;
 }
 
 .homepagePlayers {
@@ -112,6 +148,7 @@ body {}
 	margin-bottom: 12px;
 	border: 1px black solid;
 	padding-left: 8px;
+	box-shadow:0 0 20px blue;
 }
 
 .statusContainer figure
@@ -124,6 +161,7 @@ body {}
     margin-right: 7px;
 	margin-bottom: 12px;
 	border: 1px solid black;
+	box-shadow:0 0 20px yellow;
 }
 
 .statusContainer figure > img 
