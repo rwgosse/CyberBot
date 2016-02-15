@@ -94,7 +94,7 @@ class Assembly extends Application {
            $body['selected'] = NULL;
            if($body['piece'] == $this->input->get('selectbody'))
             {
-                $head['selected'] = 'selected="selected"';
+                $body['selected'] = 'selected="selected"';
                 $this->data['part1'] = $body['piece'];
             }
             
