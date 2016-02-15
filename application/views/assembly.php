@@ -1,6 +1,6 @@
 <div>
     <div id="body">
-        <div id="assembler" style="width: 600px; float: left;">
+        <div id="assembler">
             <form name="assemblyform" id="assemblyform" autocomplete="off">
                 <table>
                     <tr>
@@ -9,8 +9,8 @@
                         </th>
                     </tr>
                     <tr>
-                        <td style="width:90%;">
-                            <img src="../data/{part0}.jpeg" alt="head"/>
+                        <td class="previewtd">
+                            <img class="previewimage" src="../data/{part0}.jpeg" alt="head"/>
                         </td>
                         <td>
                             <select name="selecthead" onchange="assemblyform.submit()">
@@ -26,8 +26,8 @@
                         </th>
                     </tr>
                     <tr>
-                        <td style="width:90%;">
-                            <img src="../data/{part1}.jpeg" alt="body"/>
+                        <td class="previewtd">
+                            <img class="previewimage" src="../data/{part1}.jpeg" alt="body"/>
                         </td>
                         <td>
                             <select name="selectbody" onchange="assemblyform.submit()">
@@ -43,10 +43,11 @@
                         </th>
                     </tr>
                     <tr>
-                        <td style="width:90%;">
-                            <img src="../data/{part2}.jpeg" alt="legs" /> 
+                        <td class="previewtd">
+                            <img class="previewimage" src="../data/{part2}.jpeg" alt="legs" /> 
                         </td>
                         <td>
+							
                             <select name="selectlegs" onchange="assemblyform.submit()">
                                 {leg}
                                     <option value="{piece}" {selected}>{piece}</option>
@@ -55,10 +56,11 @@
                         </td>
                     </tr>
                 </table>
-                <input type="submit" name='btn_submit' value='Assemble'/>
+				<br/>
+                <input id="assemblebtn" type="submit" name='btn_submit' value='Assemble'/>
             </form>
         </div>
-        <div id="preview" style="margin-left: 620px;">
+        <div id="preview">
             <table>
                 <tr>
                     <th>
@@ -66,16 +68,16 @@
                     </th>
                 </tr>
                 <tr>
-                    <td>
-                        <img src="../data/{head}.jpeg" alt="head"/>
+                    <td id="assembledimg">
+                        <img class="assembledimg" src="../data/{head}.jpeg" alt="head"/>
                         </br>
-                        <img src="../data/{body}.jpeg" alt="body"/>
+                        <img class="assembledimg" src="../data/{body}.jpeg" alt="body"/>
                         </br>
-                        <img src="../data/{legs}.jpeg" alt="legs"/>
+                        <img class="assembledimg" src="../data/{legs}.jpeg" alt="legs"/>
                     </td>
                 </tr>
             </table>
-            <div style="color: red;">
+            <div>
                 {no_assemble}
             </div>
         </div>

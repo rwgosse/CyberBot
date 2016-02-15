@@ -32,7 +32,9 @@ if (!defined('APPPATH'))
                 {content}
             </div>
             <div id="footer" class="span12">
-                Copyright &copy; 2015-2016,  <a href="mailto:someone@somewhere.com">Me</a>.
+                Copyright &copy; 2016-2017,  <a href="mailto:someone@somewhere.com">Group 4</a><br/>
+				ACIT 4850 - Cyberbots Project<br/>
+				Members: Chris Leclair, Li-Jen David Wang, Nancy Ra, Richard Gosse
             </div>
         </div>
         <script src="/assets/js/jquery-1.11.1.min.js"></script>
