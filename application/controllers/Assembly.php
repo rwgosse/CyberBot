@@ -107,7 +107,7 @@ class Assembly extends Application {
         
          if ($leg_pieces == NULL)
         {
-            $this->data['part2'] = 'placeholder_body';
+            $this->data['part2'] = 'placeholder_legs';
         }
         else
         {
@@ -155,7 +155,13 @@ class Assembly extends Application {
                 $this->data['body'] = $body;
                 $this->data['legs'] = $legs;
             }
-        } 
+        }
+        else
+        {
+            $this->data['head'] = 'placeholder_head';
+            $this->data['body'] = 'placeholder_body';
+            $this->data['legs'] = 'placeholder_legs';
+        }
     }
 
 }
