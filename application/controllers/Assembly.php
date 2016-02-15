@@ -13,7 +13,6 @@ class Assembly extends Application {
     {
         parent::__construct();
         $this->load->model('collections');
-        $this->load->model('players');
     }
 
     //-------------------------------------------------------------
@@ -92,9 +91,9 @@ class Assembly extends Application {
         foreach ($body_pieces as $body)
         {
            $body['selected'] = NULL;
-           if($body['piece'] == $this->input->get('selectbody'))
+           if($body['piece'] === $this->input->get('selectbody'))
             {
-                $head['selected'] = 'selected="selected"';
+                $body['selected'] = 'selected="selected"';
                 $this->data['part1'] = $body['piece'];
             }
             

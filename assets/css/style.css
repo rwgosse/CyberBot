@@ -197,3 +197,30 @@ body {}
 {
                 
 }
+
+#body
+{
+    width: 98%;
+    min-height: 600spx;
+    background: darkgray;
+    margin: auto;
+    padding: 10px;
+    display: inline-block;  
+}
+
+#assembler
+{
+    width: 400px;
+    float: left;
+    min-height: 100%;
+    background-color: lightgray;
+    margin-right: 15px;
+}
+
+#preview
+{
+    width: 300px;
+    min-height: 100%;
+    background-color: lightgray;
+    margin-right: 15px;
+}
