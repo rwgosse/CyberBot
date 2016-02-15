@@ -13,6 +13,7 @@ if (!defined('APPPATH'))
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
+		<link href='https://fonts.googleapis.com/css?family=Josefin+Slab:400,600' rel='stylesheet' type='text/css'>
         <title>{title}</title>
         <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -31,7 +32,9 @@ if (!defined('APPPATH'))
                 {content}
             </div>
             <div id="footer" class="span12">
-                Copyright &copy; 2015-2016,  <a href="mailto:someone@somewhere.com">Me</a>.
+                Copyright &copy; 2016-2017,  <a href="mailto:someone@somewhere.com">Group 4</a><br/>
+				ACIT 4850 - Cyberbots Project<br/>
+				Members: Chris Leclair, Li-Jen David Wang, Nancy Ra, Richard Gosse
             </div>
         </div>
         <script src="/assets/js/jquery-1.11.1.min.js"></script>
