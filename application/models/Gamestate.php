@@ -16,12 +16,16 @@ class Gamestate extends CI_Model {
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('curl');
     }
 
     // call this function to refresh the game state (get from server)
     public function refresh()
     {
+        $string = $this->curl->simple_get('http://botcards.jlparry.com/status');
+        
         //TODO retrieve and parse XML
+        $xml = simplexml_load_string($string);
     }
     
     //accessor for status good/known variable
