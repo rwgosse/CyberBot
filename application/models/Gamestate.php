@@ -6,8 +6,8 @@
  * @author Chris
  */
 class Gamestate extends CI_Model {
-
-    protected $status; //0 = status unknown, 1 = status known
+    
+    protected $status = 0; //0 = status unknown/bad retrieval, 1 = status known/good retrieval
     protected $code; //status code from server
     protected $round; //round number from server
     protected $countdown; //time left in current round (from server)
@@ -26,45 +26,56 @@ class Gamestate extends CI_Model {
     
     //accessor for status good/known variable
     public function get_status()
-    {
-        //do not refresh; we want to know if LAST update was good or not!
-        
+    {        
         return $this->status;
     }
     
     //accessor for state code (code)
     public function get_code()
-    {
-        //always refresh status!
-        $this->refresh();
-        
+    {       
         return $this->code;
     }
     
     //accessor for state name (state)
     public function get_state()
-    {
-        //always refresh status!
-        $this->refresh();
+    {        
+        //derive the state name from the numerical code       
+        //PHP has no native enums and constant arrays are version dependent
+        //maybe this isn't the most elegant way but it's the safest
+        switch($this->code)
+        {
+            case 0:
+                $state = "closed";
+                break;
+            case 1:
+                $state = "setup";
+                break;
+            case 2:
+                $state = "ready";
+                break;
+            case 3:
+                $state = "open";
+                break;
+            case 4:                
+                $state = "over";
+                break;
+            default:
+                $state = "unknown"; //this should not happen
+                break;
+        }
         
-        //TODO: translate with enums or something
+        return $state;
     }
     
     //accessor for round number
     public function get_round()
     {
-        //always refresh status!
-        $this->refresh();
-        
         return $this->round;
     }
     
     //accessor for time left (countdown)
     public function get_countdown()
     {
-        //always refresh status!
-        $this->refresh();
-        
         return $this->countdown;
     }
 
