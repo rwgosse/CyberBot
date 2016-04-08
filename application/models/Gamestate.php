@@ -3,6 +3,8 @@
 /**
  * This is a model that represents the current game state
  *
+ * Usage: Load model, call refresh and then use accessors to get current state.
+ * 
  * @author Chris
  */
 class Gamestate extends CI_Model {
@@ -26,6 +28,11 @@ class Gamestate extends CI_Model {
         
         //TODO retrieve and parse XML
         $xml = simplexml_load_string($string);
+        
+        $this->code = (int)$xml->state;
+        $this->round = (int)$xml->round;
+        $this->countdown = (int)$xml->countdown;
+        $this->status = 1;
     }
     
     //accessor for status good/known variable
