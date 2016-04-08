@@ -2,10 +2,11 @@
     <h1>Dashboard</h1>
     <div class="dashboardContainer"> 
         <div class="statusContainer">
-            <h3>Game Status: Round #{round-number}</h3>
-            <p>Round state: {round-state}</p>
-            <p>Time left: {round-countdown}</p>
-            <br>
+            <div class="roundStatus">
+                <h3>Game Status: Round #{round-number}</h3>
+                <p>Round state: {round-state}</p>
+                <p>Time left: {round-countdown}</p>
+            </div>
             
             <div class="rounds">
                 <h4>Known Pieces</h4>
