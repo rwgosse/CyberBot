@@ -16,6 +16,7 @@ class Homepage extends Application {
 		parent::__construct();
 		$this->load->model('players');
 		$this->load->model('collections');
+                $this->load->model('gamestate');
 	}
 
 	//-------------------------------------------------------------
@@ -39,9 +40,20 @@ class Homepage extends Application {
 		$this->data['piecedisplay'] = $results; 
 		//calls the welcome_players function
 		$this->welcome_players();
+                //calls the welcome_states function
+                $this->welcome_states();
 		//renders the page
 		$this->render();
 	}
+        
+        //get the state from the server and display
+        private function welcome_states()
+        {
+            $this->gamestate->refresh();
+            $this->data['round-number'] = $this->gamestate->get_round();
+            $this->data['round-state'] = $this->gamestate->get_state();
+            $this->data['round-countdown'] = $this->gamestate->get_countdown();
+        }
 
 
 		private function welcome_players()
