@@ -14,6 +14,7 @@ class Admin extends Application {
 		parent::__construct();
                 $this->load->model('gamestate');
                 $this->load->model('rounds');
+                $this->load->model('agent');
 	}
 
 	//-------------------------------------------------------------
@@ -67,8 +68,19 @@ class Admin extends Application {
         //TODO: register the agent
         private function register_agent()
         {
-            $this->data['register-form'] = '';
-            $this->data['message'] = 'REGISTERED!';
+            $this->data['register-form'] = '';            
+            
+            //TODO: get this from input boxes
+            $team = "A04";
+            $name = "cyberbot";
+            $password = "tuesday";
+            
+            $success = $this->agent->register();
+            
+            if($success)
+            {
+                $this->data['message'] = 'REGISTERED!';
+            }
         }
         
         //get the state from the server and display
