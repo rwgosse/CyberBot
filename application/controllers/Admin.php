@@ -43,32 +43,28 @@ class Admin extends Application {
         function register()
         {
             $this->data['title'] = 'Administration';
-            $this->data['pagebody'] = 'admin';	// this is the view we want shown
+            $this->data['pagebody'] = 'admin_register';	// this is the view we want shown
 
-            //call the register_agent function
+            //renders the page
+            $this->render();
+            
+            //call the register_agent function to actually register the agent
             $this->register_agent();
             
-            //calls the welcome_states function
-            $this->welcome_states();
-
-            //display stored tokens from previous rounds
-            $this->admin_rounds();
-            
-            //renders the page
-            $this->render();            
+            //redirect back to the admin page
+            $this->load->helper('url');
+            redirect('admin', 'refresh');
         }
         
-        //we're not registering, so display the register agent fragment
+        //check if we're registered and display a nice message if we are or aren't
         private function display_register()
         {
-            $this->data['register-form'] = $this->parser->parse('_register_form', array(), TRUE);
             $this->data['message'] = '';
         }
         
         //TODO: register the agent
         private function register_agent()
-        {
-            $this->data['register-form'] = '';            
+        {  
             
             //TODO: get this from input boxes
             $team = "A04";

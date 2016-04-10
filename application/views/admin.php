@@ -10,7 +10,11 @@
     <p>Round {round}: {token}</p>
     {/rounds}
     
-    {register-form}
+    <h2>Registration</h2>
+    <p>Registration status: {register-status}</p>
+    <form autocomplete="off" action="admin/register">
+        <input type="submit" value="Register"/>
+    </form>
 
     <h2>Information</h2>
     <p>{message}</p>
