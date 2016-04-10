@@ -47,6 +47,7 @@ class Agent extends CI_Model
         
         //if we can register, register!
         $string = $this->curl->simple_post('http://botcards.jlparry.com/register', array('team'=>$team,'name'=>$name,'password'=>$password));
+        //echo $string;
         $xml = simplexml_load_string($string);
         
         //if the xml response is not called 'agent', something went wrong

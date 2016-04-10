@@ -75,7 +75,7 @@ class Admin extends Application {
             $name = "cyberbot";
             $password = "tuesday";
             
-            $success = $this->agent->register();
+            $success = $this->agent->register($team,$name,$password);
             
             if($success)
             {
