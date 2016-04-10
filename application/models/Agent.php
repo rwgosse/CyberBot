@@ -42,7 +42,7 @@ class Agent extends CI_Model
         $round = $this->gamestate->get_round();
         if(!($code === 2 || $code === 3))
         {
-            //return FALSE; //check disabled because servery things
+            return FALSE; //disable this check if the server is broken
         }
         
         //if we can register, register!

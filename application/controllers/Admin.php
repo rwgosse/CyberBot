@@ -27,6 +27,7 @@ class Admin extends Application {
 	{
             $this->data['title'] = 'Administration';
             $this->data['pagebody'] = 'admin';	// this is the view we want shown
+            $this->data['message'] = ''; //by default, message is an empty string
             
             //call the display_register function
             $this->display_register();
