@@ -9,7 +9,7 @@
         <h2>Registration</h2>
         <p id="register-status">Status: {register-status}</p>
         <form autocomplete="off" method="post" action="admin/register">
-            <label for="team">Team:</label><input type="text" name="team" /> <br>
+            <label for="team">Team:</label><input type="text" name="team" value="A04" readonly/> <br>
             <label for="name">Name:</label><input type="text" name="name" /> <br>
             <label for="password">Password:</label><input type="text" name="password" /> <br>
             <input type="submit" value="Register"/>

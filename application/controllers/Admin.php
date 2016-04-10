@@ -68,7 +68,7 @@ class Admin extends Application {
         {  
             
             //TODO: get this from input boxes
-            $team = $this->input->post('team');
+            $team = "A04"; //$this->input->post('team');
             $name = $this->input->post('name');
             $password = $this->input->post('password');
             
