@@ -15,6 +15,7 @@ class Admin extends Application {
                 $this->load->model('gamestate');
                 $this->load->model('rounds');
                 $this->load->model('agent');
+                $this->load->helper('url');
 	}
 
 	//-------------------------------------------------------------
@@ -51,15 +52,14 @@ class Admin extends Application {
             //call the register_agent function to actually register the agent
             $this->register_agent();
             
-            //redirect back to the admin page
-            $this->load->helper('url');
+            //redirect back to the admin page            
             redirect('admin', 'refresh');
         }
         
         //check if we're registered and display a nice message if we are or aren't
         private function display_register()
-        {
-            $this->data['message'] = '';
+        {  
+            $this->data['register-status'] = $this->agent->is_registered() ? 'Registered' : 'Not registered';
         }
         
         //TODO: register the agent
@@ -67,9 +67,9 @@ class Admin extends Application {
         {  
             
             //TODO: get this from input boxes
-            $team = "A04";
-            $name = "cyberbot";
-            $password = "tuesday";
+            $team = $this->input->post('team');
+            $name = $this->input->post('name');
+            $password = $this->input->post('password');
             
             $success = $this->agent->register($team,$name,$password);
             
