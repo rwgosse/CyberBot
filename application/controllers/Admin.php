@@ -13,6 +13,7 @@ class Admin extends Application {
 	{
 		parent::__construct();
                 $this->load->model('gamestate');
+                $this->load->model('rounds');
 	}
 
 	//-------------------------------------------------------------
@@ -24,9 +25,15 @@ class Admin extends Application {
 	{
 		$this->data['title'] = 'Administration';
 		$this->data['pagebody'] = 'admin';	// this is the view we want shown
-                //
+                
+                // 
+                
                 //calls the welcome_states function
                 $this->welcome_states();
+                
+                //display stored tokens from previous rounds
+                $this->admin_rounds();
+                
 		//renders the page
 		$this->render();
 	}
@@ -39,22 +46,12 @@ class Admin extends Application {
             $this->data['round-state'] = $this->gamestate->get_state();
             $this->data['round-countdown'] = $this->gamestate->get_countdown();
         }
-
-
-		private function welcome_players()
-	{
-		//get all the players from our model
-		$players = $this->players->all(); 
-
-		
-		$players_array = array ();
-		foreach ($players as $player)
-		{
-			$player['equity'] = $this->players->equity($player['player']);
-			$players_array[] = (array) $player;
-		}
-		$this->data['test'] = $players_array; 
-	}
+        
+        //get the list of previous rounds from the database and display
+        private function admin_rounds()
+        {
+            $this->data['rounds'] = $this->rounds->all();
+        }
 
 }
 
