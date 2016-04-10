@@ -9,6 +9,8 @@
     {rounds}
     <p>Round {round}: {token}</p>
     {/rounds}
+    
+    {register-form}
 
     <h2>Information</h2>
     <p>{message}</p>

@@ -23,20 +23,53 @@ class Admin extends Application {
         
 	function index()
 	{
-		$this->data['title'] = 'Administration';
-		$this->data['pagebody'] = 'admin';	// this is the view we want shown
-                
-                // 
-                
-                //calls the welcome_states function
-                $this->welcome_states();
-                
-                //display stored tokens from previous rounds
-                $this->admin_rounds();
-                
-		//renders the page
-		$this->render();
+            $this->data['title'] = 'Administration';
+            $this->data['pagebody'] = 'admin';	// this is the view we want shown
+            
+            //call the display_register function
+            $this->display_register();
+            
+            //calls the welcome_states function
+            $this->welcome_states();
+
+            //display stored tokens from previous rounds
+            $this->admin_rounds();
+            
+            //renders the page
+            $this->render();
 	}
+        
+        function register()
+        {
+            $this->data['title'] = 'Administration';
+            $this->data['pagebody'] = 'admin';	// this is the view we want shown
+
+            //call the register_agent function
+            $this->register_agent();
+            
+            //calls the welcome_states function
+            $this->welcome_states();
+
+            //display stored tokens from previous rounds
+            $this->admin_rounds();
+            
+            //renders the page
+            $this->render();            
+        }
+        
+        //we're not registering, so display the register agent fragment
+        private function display_register()
+        {
+            $this->data['register-form'] = $this->parser->parse('_register_form', array(), TRUE);
+            $this->data['message'] = '';
+        }
+        
+        //TODO: register the agent
+        private function register_agent()
+        {
+            $this->data['register-form'] = '';
+            $this->data['message'] = 'REGISTERED!';
+        }
         
         //get the state from the server and display
         private function welcome_states()

@@ -36,5 +36,12 @@ class Rounds extends CI_Model {
             
             return $data->result_array();
 	}
+        
+        // add a new round to the database
+        public function add($round, $token)
+        {
+            $data = array('round'=>$round, 'token'=>$token);            
+            $this->db->insert('rounds', $data); 
+        }
 
 }
