@@ -8,7 +8,8 @@ $config['menu_choices'] = array(
 	'menudata' => array(
 		array('name' => 'Home', 'link' => '/'),
 		array('name' => 'Portfolio', 'link' => '/portfolio'),
-                array('name' => 'Assembly', 'link' => '/assembly'),
+        array('name' => 'Assembly', 'link' => '/assembly'),
+		array('name' => 'Register', 'link' => '/register'),
 	)
 );
 

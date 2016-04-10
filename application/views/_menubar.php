@@ -11,7 +11,8 @@
         <input type="text" name="username" placeholder="Username" style="display:{login_visibility}">
         <input type="text" name="action" value="{login_action}" style="display:none">
         <input type="submit" value="{login_submit_text}">
-    </form>    
+    </form> 
+	<button >Register</button>
 </div>
 <ul class="nav">    
     {menudata}
