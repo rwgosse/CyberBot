@@ -1,6 +1,7 @@
 Newest changes at the top
 Format: MM/DD/YYYY HH:MM - comment  
 
+04/11/2016 13:55 - reverted game status check in Agent registration
 04/10/2016 18:33 - Styled the register view
 04/10/2016 17:25 - created MVC components for registration and filled in some components
 04/10/2016 16:26 - Added agent registration functionality and admin interface
