@@ -401,3 +401,8 @@ a:link {
 	box-shadow:0 0 20px #ffff33;
 	padding-top: 25px;
 }
+
+.register
+{
+	color:red;
+}

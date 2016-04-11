@@ -13,7 +13,8 @@ class Registration extends Application {
             parent::__construct();
             $this->load->model('register');
     }
-function index() 
+	
+	function index() 
     {
         $this->data['title'] = 'User Registration';
         $this->data['pagebody'] = 'register';
@@ -37,7 +38,7 @@ function index()
 	function checkuser()
 	{
 		//if player text field isnt empty then go on
-		if (!empty($this->input->post('player')))
+		if (!empty($this->input->post('player')) && !empty($this->input->post('password')))
 		{
 			//use check_registration method, if player doesnt exist then create them
 			if($this->register->check_registration($this->input->post('player')))
@@ -47,17 +48,25 @@ function index()
 				
 				$this->data['reg_visibility'] = "true";
 				//success msg here
-				$this->data['register_success'] = 'Player successfully registered';
+				$this->data['register_success'] = 'Player successfully registered!';
 			}
-			//if already exists then display message
-			$this->data['username_visibility'] = 'true';
-			//failure msg here
-			$this->data['username_message'] = 'User already exists, please try again';
+			else if ($this->register->check_registration($this->input->post('player')) == FALSE)
+			{
+				//if already exists then display message
+				$this->data['username_visibility'] = 'true';
+				//failure msg here
+				$this->data['username_message'] = '*User already exists, please try again';
+			}
 		}
 		else if (empty($this->input->post('player')))
 		{
 			$this->data['username_visibility'] = 'true';
-			$this->data['username_message'] = 'This field must be filled in.';
+			$this->data['username_message'] = '*This field must be filled in.';
+		}
+		else
+		{
+			$this->data['password_visibility'] = 'true';
+			$this->data['password_message'] = '*This field must be filled in.';
 		}
 		
 	}
