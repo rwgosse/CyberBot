@@ -113,6 +113,7 @@ class Application extends CI_Controller {
                 $this->data['login_submit_text'] = 'Logout';
                 $this->data['login_visibility'] = 'none';
                 $this->data['login_action'] = 'logout';
+				$this->data['register_visibility'] = 'none';
             }
             else
             {

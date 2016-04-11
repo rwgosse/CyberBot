@@ -6,14 +6,14 @@
 				<table id="registertable">
 					<tr>
 						<td>Username: </td>
-						<td><input type="text" name="player" placeholder="Username"></td>
+						<td><input type="text" name="player" placeholder="username"><div class="register" style="display:{username_visibility}">{username_message}</div></td>
 					</tr>
 					<tr>
 						<td>Password: </td>
-						<td><input type="text" name="password" placeholder="password"></td>
+						<td><input type="text" name="password" placeholder="password"><div class="register" style="display:{password_visibility}">{password_message}</div></td>
 					</tr>
 					<tr>
-						<td></td>
+						<td><div style="display:{reg_visibility}">{register_success}</div></td>
 						<td><input type="submit" value="Register"></td>
 					</tr>
 				</table>
