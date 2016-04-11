@@ -16,6 +16,7 @@ class Homepage extends Application {
 		parent::__construct();
 		$this->load->model('players');
 		$this->load->model('collections');
+                $this->load->model('transactions');
 		$this->load->model('gamestate');
 	}
 
@@ -42,6 +43,8 @@ class Homepage extends Application {
 		$this->welcome_players();
                 //calls the welcome_states function
                 $this->welcome_states();
+                //calls the welcome_transactions function
+                $this->welcome_transactions();
 		//renders the page
 		$this->render();
 	}
@@ -56,7 +59,7 @@ class Homepage extends Application {
         }
 
 
-		private function welcome_players()
+	private function welcome_players()
 	{
 		//get all the players from our model
 		$players = $this->players->all(); 
@@ -70,6 +73,13 @@ class Homepage extends Application {
 		}
 		$this->data['test'] = $players_array; 
 	}
+        
+        //get the transactions from the server and display
+        private function welcome_transactions()
+        {
+            $transactions = $this->transactions->all();
+            $this->data['transactions'] = array_reverse(array_slice($transactions, -5, 5, TRUE),TRUE);
+        }
 
 }
 
