@@ -13,7 +13,7 @@
 						<td><input type="text" name="password" placeholder="password"><div class="register" style="display:{password_visibility}">{password_message}</div></td>
 					</tr>
 					<tr>
-						<td><div style="display:{reg_visibility}">{register_success}</div></td>
+						<td><div class="register" style="display:{reg_visibility}">{register_success}</div></td>
 						<td><input type="submit" value="Register"></td>
 					</tr>
 				</table>
