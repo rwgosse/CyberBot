@@ -12,7 +12,7 @@ class Register extends Application {
     function __construct() 
     {
         parent::__construct();
-        $this->load->model('collections');
+        //$this->load->model('register');
     }
 
     //-------------------------------------------------------------
