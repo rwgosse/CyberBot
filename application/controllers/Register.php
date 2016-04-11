@@ -7,20 +7,24 @@
  *
  * ------------------------------------------------------------------------
  */
-class Registration extends Application {
+class Register extends Application {
 
-	    function __construct() 
+    function __construct() 
     {
         parent::__construct();
-        $this->load->model('Register');
+        //$this->load->model('register');
     }
-	
-	    function index() 
+
+    //-------------------------------------------------------------
+    //  The normal pages
+    //-------------------------------------------------------------
+
+    function index() 
     {
         $this->data['title'] = 'User Registration';
+        // this is the view we want shown
         $this->data['pagebody'] = 'register';
-		
-		$this->render();
-		
-	}
+        
+        $this->render();
+    }
 }

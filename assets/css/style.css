@@ -365,3 +365,39 @@ a:link {
     margin-bottom: 0;
 }
 
+#registertable
+{
+	background:white;
+	color:black;
+}
+
+#registration-wrapper
+{
+	background:lightgray;
+	box-shadow:0 0 20px #33ffcc;
+	padding-top: 25px;
+	
+	padding-bottom: 25px;
+	width:90%;
+	margin: auto;
+}
+
+#registertable
+{
+	background: white;
+	box-shadow:0 0 20px #ff6699;
+	padding-top: 25px;
+	width:90%;
+	margin: auto;
+}
+
+.body
+{
+	width: 98%;
+    margin: auto;
+    min-height: 300px;
+	color: black;
+	background-color: darkgray;
+	box-shadow:0 0 20px #ffff33;
+	padding-top: 25px;
+}
