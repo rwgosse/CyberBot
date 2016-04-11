@@ -28,22 +28,22 @@
             </div>
             
             <h3>Transactions</h3>
-            <div class="homepage-transaction">
+            <div id="homepage-transactions">
                 <table>
                     <tr>
-                        <th>Date/Time</th>
                         <th>Player</th>
+                        <th>Date/Time</th>
+                        <th>Trans</th>
                         <th>Broker</th>
                         <th>Series</th>
-                        <th>Trans</th>
                     </tr>
                 {transactions}
                     <tr>
-                        <td>{datetime}</td>
                         <td>{player}</td>
-                        <td>{broker}</td>
-                        <td>{series}</td>
+                        <td>{datetime}</td>
                         <td>{trans}</td>
+                        <td>{broker}</td>
+                        <td>{series}</td>                       
                     </tr>               
                 {/transactions}
                 </table>
