@@ -151,6 +151,13 @@ class Collections extends CI_Model {
             {
                 
                 $line = fgetcsv($file_handle, 1024);
+                
+                //fix for empty lines creating blank array entries
+                if(empty($line))
+                {
+                    continue;
+                }
+                
                 $collection = array('token'=>$line[0],'piece'=>$line[1],'broker'=>$line[2],'player'=>$line[3],'datetime'=>$line[4]);
                 
                 //check conditions if $which is not empty
@@ -206,6 +213,13 @@ class Collections extends CI_Model {
             {
                 
                 $line = fgetcsv($file_handle, 1024);
+                
+                //fix for empty lines creating blank array entries
+                if(empty($line))
+                {
+                    continue;
+                }
+                
                 $collection = array('token'=>$line[0],'piece'=>$line[1],'broker'=>$line[2],'player'=>$line[3],'datetime'=>$line[4]);
                 
                 //check the player condition
@@ -241,6 +255,13 @@ class Collections extends CI_Model {
             {
                 
                 $line = fgetcsv($file_handle, 1024);
+                
+                //fix for empty lines creating blank array entries
+                if(empty($line))
+                {
+                    continue;
+                }
+                               
                 $collection = array('token'=>$line[0],'piece'=>$line[1],'broker'=>$line[2],'player'=>$line[3],'datetime'=>$line[4]);
                 
                 $exists = FALSE;
@@ -284,6 +305,13 @@ class Collections extends CI_Model {
             {
                 
                 $line = fgetcsv($file_handle, 1024);
+                
+                //fix for empty lines creating blank array entries
+                if(empty($line))
+                {
+                    continue;
+                }
+                
                 //$collection = array('token'=>$line[0],'piece'=>$line[1],'broker'=>$line[2],'player'=>$line[3],'datetime'=>$line[4]);
                 
                 //we only want the player name!

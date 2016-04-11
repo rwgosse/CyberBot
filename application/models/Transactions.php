@@ -73,6 +73,13 @@ class Transactions extends CI_Model {
             {
                 
                 $line = fgetcsv($file_handle, 1024);
+                
+                //fix for empty lines creating blank array entries
+                if(empty($line))
+                {
+                    continue;
+                }
+                
                 $transaction = array('transaction_id'=>$line[0],'datetime'=>$line[1],'broker'=>$line[2],'player'=>$line[3],'series'=>$line[4],'trans'=>$line[5]);
                 
                 //check conditions if $which is not empty
@@ -105,10 +112,6 @@ class Transactions extends CI_Model {
                    
                     $transactions[] = $transaction;
                 }
-
-                
-                //echo $line_of_text[0] . $line_of_text[1] . $line_of_text[2] . "<BR>";
-
             }
 
             //close the handle and return the results

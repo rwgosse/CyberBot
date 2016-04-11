@@ -68,7 +68,7 @@ class Series extends CI_Model {
             //open remote URL
             $file_handle = fopen("http://botcards.jlparry.com/data/series", "r");
         
-            $transactions = array();
+            $all_series = array();
 
             //get the first line and toss it because it's labels
             fgetcsv($file_handle, 1024);
@@ -78,7 +78,14 @@ class Series extends CI_Model {
             {
                 
                 $line = fgetcsv($file_handle, 1024);
-                $transaction = array('series'=>$line[0],'description'=>$line[1],'frequency'=>$line[2],'value'=>$line[3]);
+                
+                //fix for empty lines creating blank array entries
+                if(empty($line))
+                {
+                    continue;
+                }
+                
+                $series = array('series'=>$line[0],'description'=>$line[1],'frequency'=>$line[2],'value'=>$line[3]);
                 
                 //check conditions if $which is not empty
                 if(!empty($which))
@@ -92,7 +99,7 @@ class Series extends CI_Model {
                     foreach($keys as $key)
                     {
                         //if it doesn't match, disqualify it
-                        if(!($which[$key] === $transaction[$key]))
+                        if(!($which[$key] === $series[$key]))
                         {
                             $valid = FALSE;
                         }
@@ -101,21 +108,21 @@ class Series extends CI_Model {
                     //if it's still valid, put the row in
                     if($valid)
                     {
-                        $transactions[] = $transaction;
+                        $all_series[] = $series;
                     }
                 }
                 //if not, just put it in
                 else
                 {
                    
-                    $transactions[] = $transaction;
+                    $all_series[] = $series;
                 }
 
             }
 
             //close the handle and return the results
             fclose($file_handle);
-            return $transactions;
+            return $all_series;
         }
 
 }
