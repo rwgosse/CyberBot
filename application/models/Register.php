@@ -40,8 +40,8 @@ class Register extends CI_Model {
 	
 	public function password_hasher($password)
 	{
-		
-		$hash = password_hash ( $password , PASSWORD_BCRYPT);
+		//using password_hash to encrpt the password
+		$hash = password_hash ( $password , PASSWORD_DEFAULT);
 		
 		return $hash;
 	}
