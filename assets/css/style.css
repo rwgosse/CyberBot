@@ -339,4 +339,29 @@ a:link {
 	text-align: center;
 }
 
+/* CSS for admin page */
+
+#admin-wrapper
+{
+	background-color: darkgray;
+	box-shadow:0 0 20px aquamarine;
+	color: black;
+	padding-bottom: 3%;
+}
+
+#admin-wrapper > div
+{
+    margin: 10px;
+}
+
+#admin-register #register-status
+{
+    font-size: 1.25em;
+}
+
+#admin-rounds p
+{
+    margin-top: 0;
+    margin-bottom: 0;
+}
 

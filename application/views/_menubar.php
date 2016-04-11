@@ -10,7 +10,9 @@
     <form name="loginform" id="loginform" autocomplete="off" method="POST">
         <input type="text" name="username" placeholder="Username" style="display:{login_visibility}">
         <input type="text" name="action" value="{login_action}" style="display:none">
+		<input type="text" name="password" placeholder="password" style="display:{login_visibility}">
         <input type="submit" value="{login_submit_text}">
+		<a href="register/" style="display:{login_visibility}">Click here to Register</a>
     </form>    
 </div>
 <ul class="nav">    
