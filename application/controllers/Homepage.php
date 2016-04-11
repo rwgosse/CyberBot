@@ -16,7 +16,7 @@ class Homepage extends Application {
 		parent::__construct();
 		$this->load->model('players');
 		$this->load->model('collections');
-                $this->load->model('gamestate');
+        $this->load->model('gamestate');
 	}
 
 	//-------------------------------------------------------------
