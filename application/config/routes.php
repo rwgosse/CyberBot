@@ -52,6 +52,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'homepage';
 $route['Assembly'] = 'assembly';
 $route['Porfolio'] = 'portfolio';
-$route['Register'] = 'register';
+$route['Resgister'] = 'register';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

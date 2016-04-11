@@ -1,24 +1,23 @@
-
-<div>
-	<form>
-		<table>
-			<tr>
-				<td>Username:</td>
-				<td></td>
-			</tr>
-		<tr>
-			<td>Password:</td>
-				<td></td>
-			</tr>
-		<tr>
-			<td>Re-enter Password</td>
-				<td></td>
-			</tr>
-			<tr>
-			<td>Password:</td>
-				<td></td>
-			</tr>
+<div class="body">
+	<h1>Fill out form:</h1>
+	<div id="registration-wrapper"> 
 		
-		</table>
-	</form>
+			<form name="registerform" id="registerform" autocomplete="off" method="POST">
+				<table id="registertable">
+					<tr>
+						<td>Username: </td>
+						<td><input type="text" name="player" placeholder="Username"><div class="register" style="display:{username_visibility}">{username_message}</div></td>
+					</tr>
+					<tr>
+						<td>Password: </td>
+						<td><input type="text" name="password" placeholder="password"><div class="register" style="display:{password_visibility}">{password_message}</div></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" value="Register"></td>
+					</tr>
+				</table>
+			</form> 
+		
+	</div>        
 </div>
