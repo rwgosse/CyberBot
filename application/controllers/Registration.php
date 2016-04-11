@@ -24,9 +24,10 @@ function index()
 			$this->data['register_visibility'] = 'none';
 		}
 		
-		//set the visibility to none until user messes up
+		//set the visibility to none until something happens
 		$this->data['username_visibility'] = 'none';
 		$this->data['password_visibility'] = 'none';
+		$this->data['reg_visibility'] = 'none';
 		
 		//call the checkuser method
 		$this->checkuser();
@@ -43,15 +44,21 @@ function index()
 			{
 				//send 'player' and 'password' data to database
 				$this->register->register_user($this->input->post('player'), $this->input->post('password'));
-				//success msg here
 				
-				$this->load->helper('url');
-				redirect('/');
+				$this->data['reg_visibility'] = "true";
+				//success msg here
+				$this->data['register_success'] = 'Player successfully registered';
 			}
 			//if already exists then display message
 			$this->data['username_visibility'] = 'true';
 			//failure msg here
 			$this->data['username_message'] = 'User already exists, please try again';
 		}
+		else if (empty($this->input->post('player')))
+		{
+			$this->data['username_visibility'] = 'true';
+			$this->data['username_message'] = 'This field must be filled in.';
+		}
+		
 	}
 }
