@@ -10,8 +10,8 @@ class Registration extends Application {
 
     function __construct()
     {
-            parent::__construct();
-            $this->load->model('register');
+        parent::__construct();
+        $this->load->model('register');
     }
 	
 	function index() 
@@ -37,37 +37,38 @@ class Registration extends Application {
 	
 	function checkuser()
 	{
-		//if player text field isnt empty then go on
-		if (!empty($this->input->post('player')) && !empty($this->input->post('password')))
-		{
-			//use check_registration method, if player doesnt exist then create them
-			if($this->register->check_registration($this->input->post('player')))
+		
+			//if player text field isnt empty then go on
+			if (!empty($this->input->post('player')) && !empty($this->input->post('password')))
 			{
-				//send 'player' and 'password' data to database
-				$this->register->register_user($this->input->post('player'), $this->input->post('password'));
-				
-				$this->data['reg_visibility'] = "true";
-				//success msg here
-				$this->data['register_success'] = 'Player successfully registered!';
+				//use check_registration method, if player doesnt exist then create them
+				if($this->register->check_registration($this->input->post('player')))
+				{
+					//send 'player' and 'password' data to database
+					$this->register->register_user($this->input->post('player'), $this->input->post('password'));
+
+					$this->data['reg_visibility'] = "true";
+					//success msg here
+					$this->data['register_success'] = 'Player successfully registered!';
+				}
+				else if ($this->register->check_registration($this->input->post('player')) == FALSE)
+				{
+					//if already exists then display message
+					$this->data['username_visibility'] = 'true';
+					//failure msg here
+					$this->data['username_message'] = '*User already exists, please try again';
+				}
 			}
-			else if ($this->register->check_registration($this->input->post('player')) == FALSE)
+			else if (empty($this->input->post('player')))
 			{
-				//if already exists then display message
 				$this->data['username_visibility'] = 'true';
-				//failure msg here
-				$this->data['username_message'] = '*User already exists, please try again';
+				$this->data['username_message'] = '*This field must be filled in.';
 			}
-		}
-		else if (empty($this->input->post('player')))
-		{
-			$this->data['username_visibility'] = 'true';
-			$this->data['username_message'] = '*This field must be filled in.';
-		}
-		else
-		{
-			$this->data['password_visibility'] = 'true';
-			$this->data['password_message'] = '*This field must be filled in.';
-		}
+			else
+			{
+				$this->data['password_visibility'] = 'true';
+				$this->data['password_message'] = '*This field must be filled in.';
+			}
 		
 	}
 }
