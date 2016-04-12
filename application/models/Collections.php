@@ -1,25 +1,21 @@
 <?php
-
 /**
  * This is a model for collections that grabs data from a MySQL database.
  *
  * @author Chris
  */
-class Collections extends CI_Model {
-
-
+class Collections extends CI_Model 
+{
 	// Constructor
 	public function __construct()
 	{
 		parent::__construct();
 	}
-
 	// retrieve a single collection item
 	public function get($which)
 	{
-            // get data from the server
-            $data = $this->get_collections_where($which);
-
+            // get data from the database
+            $data = $this->db->get_where('collections',$which);
             // return the first and hopefully only record
             return $data->result_array()[0];
 	}
@@ -27,8 +23,8 @@ class Collections extends CI_Model {
         // retrieve all matching collection items
         public function get_all($which)
         {
-            // get data from the server
-            $data = $this->get_collections_where($which);
+            // get data from the database
+            $data = $this->db->get_where('collections',$which);
             
             // return all records
             return $data->result_array();
@@ -38,29 +34,25 @@ class Collections extends CI_Model {
         public function get_like($which, $like)
         {
             // get data from the database
-            //$this->db->select('piece');
-            //$this->db->where('player',$which);
-            //$this->db->like('piece', $like, 'before');
+            $this->db->select('piece');
+            $this->db->where('player',$which);
+            $this->db->like('piece', $like, 'before');
             
-            //$data =  $this->db->get('collections');
-            
-            $data = $this->get_pieces_like($which,$like);
+            $data =  $this->db->get('collections');
             
             // return all records
-            return $data;//->result_array();
+            return $data->result_array();
         }
         
         // retrieve the first in selected column matching player name in collection items
         public function get_like_first($which, $like)
         {
             // get data from the database
-            //$this->db->select('piece');
-            //$this->db->where('player',$which);
-            //$this->db->like('piece', $like, 'before');
+            $this->db->select('piece');
+            $this->db->where('player',$which);
+            $this->db->like('piece', $like, 'before');
             
-            //$data =  $this->db->get('collections')->result_array();
-            
-            $data = $this->get_pieces_like($which,$like);
+            $data =  $this->db->get('collections')->result_array();
             
             // return all records
             return $data[0];
@@ -69,8 +61,8 @@ class Collections extends CI_Model {
         // retrieve a structured array of pieces and their quantity
         public function get_pieces($which)
         {
-            // get data from the server
-            $data = $this->get_collections_where($which);
+            // get data from the database
+            $data = $this->db->get_where('collections',$which)->result_array();
             
             // we need to get an array of the form position:[piece:quantity]
             $pieces = array
@@ -93,31 +85,28 @@ class Collections extends CI_Model {
             return $pieces;
             
         }
-
 	// retrieve all of the collection items
 	public function all()
 	{
-            // get data from the server
-            $data = $this->get_collections_where(NULL);
+            // get data from the database
+            $data = $this->db->get('collections');
             
-            return $data;
+            return $data->result_array();
 	}
-
 	// retrieve the first collection item
 	public function first()
 	{
-            //$this->db->select('piece');
-            // get data from the server
-            $data = $this->get_collections_where(NULL);
+            $this->db->select('piece');
+            // get data from the database
+            $data = $this->db->get('collections')->result_array();
             
             return $data[0];
 	}
-
 	// retrieve the last collection item
 	public function last()
 	{
-            // get data from the server
-            $data = $this->get_collections_where(NULL);
+            // get data from the database
+            $data = $this->db->get('collections')->result_array();
             
             $index = count($data) - 1;
             return $data[$index];
@@ -125,204 +114,23 @@ class Collections extends CI_Model {
         
         public function all_name()
         {
-            return $this->get_players();
+            $this->db->select('player');
+            
+            $data = $this->db->get('collections');
+            return $data->result_array();
         }
         
 	
 	public function distinct_all()
 	{
             // get data from the database
-            return $this->get_pieces_distinct();
+		$this->db->select('piece');
+		$this->db->distinct();
+		
+		
+        $data = $this->db->get('collections');
+            
+            return $data->result_array();
 	}
-        
-        // this function implements db get where almost perfectly
-        private function get_collections_where($which)
-        {
-            //open remote URL
-            $file_handle = fopen("http://botcards.jlparry.com/data/certificates", "r");
-        
-            $collections = array();
-
-            //get the first line and toss it because it's labels
-            fgetcsv($file_handle, 1024);
-            
-            //go through all remaining rows and fill an array with them
-            while (!feof($file_handle))
-            {
-                
-                $line = fgetcsv($file_handle, 1024);
-                
-                //fix for empty lines creating blank array entries
-                if(empty($line))
-                {
-                    continue;
-                }
-                
-                $collection = array('token'=>$line[0],'piece'=>$line[1],'broker'=>$line[2],'player'=>$line[3],'datetime'=>$line[4]);
-                
-                //check conditions if $which is not empty
-                if(!empty($which))
-                {
-                    $valid = TRUE;
-                    
-                    //get all array keys
-                    $keys = array_keys($which);
-                    
-                    //for each array key, check if the values match
-                    foreach($keys as $key)
-                    {
-                        //if it doesn't match, disqualify it
-                        if(!($which[$key] === $collection[$key]))
-                        {
-                            $valid = FALSE;
-                        }
-                    }
-                    
-                    //if it's still valid, put the row in
-                    if($valid)
-                    {
-                        $collections[] = $collection;
-                    }
-                }
-                //if not, just put it in
-                else
-                {
-                   
-                    $collections[] = $collection;
-                }
-            }
-
-            //close the handle and return the results
-            fclose($file_handle);
-            return $collections;
-        }
-        
-        //get pieces where piece like "%arg" and player == $arg
-        private function get_pieces_like($player,$piece)
-        {
-            //open remote URL
-            $file_handle = fopen("http://botcards.jlparry.com/data/certificates", "r");
-        
-            $collections = array();
-
-            //get the first line and toss it because it's labels
-            fgetcsv($file_handle, 1024);
-            
-            //go through all remaining rows and fill an array with them
-            while (!feof($file_handle))
-            {
-                
-                $line = fgetcsv($file_handle, 1024);
-                
-                //fix for empty lines creating blank array entries
-                if(empty($line))
-                {
-                    continue;
-                }
-                
-                $collection = array('token'=>$line[0],'piece'=>$line[1],'broker'=>$line[2],'player'=>$line[3],'datetime'=>$line[4]);
-                
-                //check the player condition
-                if($collection['player'] === $player)
-                {
-                    //check the piece condition
-                    if(substr($collection['piece'],-1) === $piece)
-                    {
-                        $collections[] = array('piece'=>$collection['piece']);
-                    }
-                }
-                
-            }
-
-            //close the handle and return the results
-            fclose($file_handle);
-            return $collections;
-        }
-        
-        //get a list of pieces (like a select distinct)
-        private function get_pieces_distinct()
-        {
-            //open remote URL
-            $file_handle = fopen("http://botcards.jlparry.com/data/certificates", "r");
-        
-            $collections = array();
-
-            //get the first line and toss it because it's labels
-            fgetcsv($file_handle, 1024);
-            
-            //go through all remaining rows and fill an array with them
-            while (!feof($file_handle))
-            {
-                
-                $line = fgetcsv($file_handle, 1024);
-                
-                //fix for empty lines creating blank array entries
-                if(empty($line))
-                {
-                    continue;
-                }
-                               
-                $collection = array('token'=>$line[0],'piece'=>$line[1],'broker'=>$line[2],'player'=>$line[3],'datetime'=>$line[4]);
-                
-                $exists = FALSE;
-                
-                //check if the piece is already in the collection
-                foreach($collections as $existing)
-                {
-                    if($existing['piece'] === $collection['piece'])
-                    {
-                        //if it exists, set exists to true
-                        $exists = TRUE;
-                    }
-                }
-                
-                //does it already exist? if not, add it!
-                if(!$exists)
-                {
-                    $collections[] = array('piece'=>$collection['piece']);                
-                }
-                
-            }
-
-            //close the handle and return the results
-            fclose($file_handle);
-            return $collections;
-        }
-        
-        //get all player names
-        private function get_players()
-        {
-            //open remote URL
-            $file_handle = fopen("http://botcards.jlparry.com/data/certificates", "r");
-        
-            $collections = array();
-
-            //get the first line and toss it because it's labels
-            fgetcsv($file_handle, 1024);
-            
-            //go through all remaining rows and fill an array with them
-            while (!feof($file_handle))
-            {
-                
-                $line = fgetcsv($file_handle, 1024);
-                
-                //fix for empty lines creating blank array entries
-                if(empty($line))
-                {
-                    continue;
-                }
-                
-                //$collection = array('token'=>$line[0],'piece'=>$line[1],'broker'=>$line[2],'player'=>$line[3],'datetime'=>$line[4]);
-                
-                //we only want the player name!
-                $collections[] = array('player'=>$line[3]);
-
-            }
-
-            //close the handle and return the results
-            fclose($file_handle);
-            return $collections;             
-        }
-
 	
 }
