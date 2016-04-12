@@ -19,6 +19,13 @@
 						<td><div class="register" style="display:{reg_visibility}">{register_success}</div></td>
 						<td><input type="submit" value="Register"></td>
 					</tr>
+					<tr>
+						<td colspan="2">
+							<div style="display:{reg_visibility}">
+								Sign-in via the login in the menubar above or <a href="/">click here to go home.</a>
+							</div>
+						</td>
+					</tr>
 				</table>
 			</form> 
 		
