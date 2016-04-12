@@ -53,5 +53,6 @@ $route['default_controller'] = 'homepage';
 $route['Assembly'] = 'assembly';
 $route['Porfolio'] = 'portfolio';
 $route['Resgister'] = 'register';
+$route['Admin'] = 'admin';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

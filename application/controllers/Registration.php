@@ -69,12 +69,12 @@ class Registration extends Application {
 			}
 
 		}
-		else if (empty($this->input->post('player')))
+		else if (empty($this->input->post('player')) && !empty($this->input->post('password')))
 		{
 			$this->data['username_visibility'] = 'true';
 			$this->data['username_message'] = '*Username field must be filled in.';
 		}
-		else if (empty($this->input->post('password')))
+		else if (empty($this->input->post('password')) && !empty($this->input->post('player')))
 		{
 			$this->data['password_visibility'] = 'true';
 			$this->data['password_message'] = '*Password field must be filled in.';

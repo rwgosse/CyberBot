@@ -26,7 +26,8 @@ class Application extends CI_Controller {
 
             // load parser library
             $this->load->library('parser');
-
+			//load helpers
+			$this->load->helper(array('form', 'url'));
             // create data and error arrays
             $this->data = array();
             $this->data['title'] = 'CyberBot Web App';	// our default title
@@ -126,6 +127,12 @@ class Application extends CI_Controller {
                 $this->data['login_visibility'] = 'none';
                 $this->data['login_action'] = 'logout';
 				$this->data['register_visibility'] = 'none';
+				$this->data['admin_visibility'] = 'none';
+				
+				if ($this->players->check_admin($this->session->userdata['username']) == 1)
+				{
+				$this->data['admin_visibility'] = 'true';
+				}	
             }
             else
             {
@@ -135,6 +142,7 @@ class Application extends CI_Controller {
                 $this->data['login_visibility'] = 'initial';
                 $this->data['login_action'] = 'login';
 				$this->data['imghide'] = 'none';
+				$this->data['admin_visibility'] = 'none';
             }
             
             // parse the menu bar

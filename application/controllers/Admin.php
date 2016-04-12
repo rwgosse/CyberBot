@@ -14,6 +14,7 @@ class Admin extends Application {
 		parent::__construct();
                 $this->load->model('gamestate');
                 $this->load->model('rounds');
+				$this->load->model('players');
                 $this->load->model('agent');
                 $this->load->helper('url');
 	}
@@ -26,7 +27,16 @@ class Admin extends Application {
 	function index()
 	{
             $this->data['title'] = 'Administration';
-            $this->data['pagebody'] = 'admin';	// this is the view we want shown
+			
+			if ($this->players->check_admin($this->session->userdata['username']) == 1)
+				{
+				$this->data['admin_visibility'] = 'true';
+				$this->data['pagebody'] = 'admin';	// this is the view we want shown
+				}
+            else {
+				//redirect back to the admin page            
+            redirect('/', 'refresh');
+			}
             $this->data['message'] = ''; //by default, message is an empty string
             
             //call the display_register function
