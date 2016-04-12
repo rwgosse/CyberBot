@@ -62,6 +62,7 @@ class Application extends CI_Controller {
             
             // get the login and action from get/post
             $username = $this->input->get_post('username');
+			$password = $this->input->get_post('password');
             $action = $this->input->get_post('action');
             
             // a bit of validation: check both username and action submitted
@@ -75,18 +76,27 @@ class Application extends CI_Controller {
             else if(!empty($username) && $action === 'login')
             {
                 // if username is not empty, and action is login, check against users
-                
-                $this->load->model('players');            
+                $this->load->model('players'); 
+				
                 if($username === $this->players->get(array('player'=>$username))['player'])
                 {
-                    // if user exists, log in by adding session data
-                    $this->session->set_userdata(array('username'=>$username));
-                    $this->data['login_message'] = 'Logged in successfully!';
+					$check = $this->players->check_password($username);
+					
+					if(password_verify($password, $check))
+					{
+						// if user exists, log in by adding session data
+						$this->session->set_userdata(array('username'=>$username));
+						$this->data['login_message'] = 'Logged in successfully!';
+					}
+					else
+					{
+						$this->data['login_message'] = 'Invalid password!';
+					}
                 }
                 else
                 {
                     // if user does not exist, display a message
-                    $this->data['login_message'] = 'Invalid username!';
+					$this->data['login_message'] = 'Invalid username!';
                 }
             }
             else if(empty($username) && $action === 'login')
@@ -110,6 +120,7 @@ class Application extends CI_Controller {
             {
                 // if so, display logout button
                 $this->data['login_text'] = 'Hi, ' . $this->session->userdata('username');
+				$this->data['img'] = $this->session->userdata('username');
                 $this->data['login_submit_text'] = 'Logout';
                 $this->data['login_visibility'] = 'none';
                 $this->data['login_action'] = 'logout';
