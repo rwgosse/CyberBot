@@ -5,8 +5,10 @@
 ?>
 <h2>Cyberbots Web App</h2>
 <div id="loginbox">
-    <div id="loginmessage">{login_message} <img sr="./data/uploads/{img}.jpg" alt="avatar"></div>
+	<div style="display:{imghide}"><img src="../data/uploads/{img}.jpg" alt="{img}" /> </div>
+    <div id="loginmessage">{login_message}</div>
     <span id="logintext">{login_text}</span>
+	
     <form name="loginform" id="loginform" autocomplete="off" method="POST">
         <input type="text" name="username" placeholder="Username" style="display:{login_visibility}">
         <input type="text" name="action" value="{login_action}" style="display:none">
