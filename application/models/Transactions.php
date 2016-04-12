@@ -61,7 +61,7 @@ class Transactions extends CI_Model {
         private function get_transactions_where($which)
         {
             //open remote URL
-            $file_handle = fopen("http://botcards.jlparry.com/data/transactions", "r");
+            $file_handle = fopen('http://' . $this->config->item('bcc') . '/transactions', "r");
         
             $transactions = array();
 
