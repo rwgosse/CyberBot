@@ -85,6 +85,7 @@ class Registration extends Application {
 			$config['max_size'] = '2048'; // Can be set to particular file size , here it is 2 MB(2048 Kb)
 			$config['max_height'] = '50';
 			$config['max_width'] = '50';
+			$config['file_name'] = $this->input->post('player');
 		
 		$this->upload->initialize($config); 
 		$this->load->library('upload', $config);
