@@ -12,6 +12,8 @@ $config['menu_choices'] = array(
 	)
 );
 
+$config['bcc'] = 'botcards.jlparry.com';
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

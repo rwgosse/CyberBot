@@ -66,8 +66,14 @@ class Series extends CI_Model {
         private function get_series_where($which)
         {
             //open remote URL
-            $file_handle = fopen("http://botcards.jlparry.com/data/series", "r");
+            $file_handle = @fopen('http://' . $this->config->item('bcc') . '/data/series', "r");
         
+            //quick fix to deal with nonexistent data
+            if($file_handle === FALSE)
+            {
+                return array();
+            }
+            
             $all_series = array();
 
             //get the first line and toss it because it's labels

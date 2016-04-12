@@ -1,6 +1,7 @@
 Newest changes at the top
 Format: MM/DD/YYYY HH:MM - comment  
 
+04/12/2016 10:58 - Added error handling in server transactions and switched URL to use global constant
 04/12/2016 10:24 - Reverted Collections model to store data locally again
 04/11/2016 20:39 - Added transaction display to the homepage
 04/11/2016 20:40 - Implemented avatar upload in user registration

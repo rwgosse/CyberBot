@@ -46,9 +46,15 @@ class Agent extends CI_Model
         }
         
         //if we can register, register!
-        $string = $this->curl->simple_post('http://botcards.jlparry.com/register', array('team'=>$team,'name'=>$name,'password'=>$password));
+        $string = $this->curl->simple_post('http://' . $this->config->item('bcc') . '/register', array('team'=>$team,'name'=>$name,'password'=>$password));
         //echo $string;
-        $xml = simplexml_load_string($string);
+        $xml = @simplexml_load_string($string);
+        
+        //if the xml variable is literally false, then it's an error and something went wrong
+        if($xml === FALSE)
+        {
+            return FALSE;
+        }
         
         //if the xml response is not called 'agent', something went wrong
         if(!$xml->getName() === "agent")
