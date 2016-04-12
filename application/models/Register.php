@@ -51,29 +51,4 @@ class Register extends CI_Model {
 		return $hash;
 	}
 	
-//The below section has been moved to the Registration controller because codeigniter user guide demos it
-	
-//	public function do_upload()
-//	{
-//		
-//			$config['upload_path'] = './data/uploads/';
-//			$config['allowed_types'] = 'gif|jpg|png|jpeg|';
-//			$config['overwrite'] = TRUE;
-//			$config['max_size'] = '2048000'; // Can be set to particular file size , here it is 2 MB(2048 Kb)
-//			$config['max_height'] = '768';
-//			$config['max_width'] = '1024';
-//		
-//		
-//		$this->load->library('upload', $config);
-//		
-//		if(!$this->upload->do_upload())
-//		{
-//		$error = array('error' => $this->upload->display_errors());
-//		}
-//		else
-//		{
-//		$data = array('upload_data' => $this->upload->data());
-//		}
-//	}
-	
 }
