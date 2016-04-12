@@ -1,6 +1,7 @@
 Newest changes at the top
 Format: MM/DD/YYYY HH:MM - comment  
 
+04/12/2016 14:11 - modified transactions model to convert date properly
 04/12/2016 14:10 - Initial card buy component
 04/12/2016 12:56 - Added error message for uploading an avatar for registration
 04/12/2016 11:45 - Added default team name 'cyberbot' to admin view
