@@ -24,10 +24,18 @@ class Gamestate extends CI_Model {
     // call this function to refresh the game state (get from server)
     public function refresh()
     {
-        $string = $this->curl->simple_get('http://botcards.jlparry.com/status');
+        $string = $this->curl->simple_get('http://' . $this->config->item('bcc') . '/status');
+        //$string = $this->curl->simple_get('http://botcards.jlparry.com/status');
         
-        //TODO retrieve and parse XML
-        $xml = simplexml_load_string($string);
+        //retrieve and parse XML
+        $xml = @simplexml_load_string($string);
+        
+        //check for a failure
+        if($xml === FALSE)
+        {
+            $this->status = 0;
+            return;
+        }
         
         $this->code = (int)$xml->state;
         $this->round = (int)$xml->round;
