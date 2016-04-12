@@ -60,4 +60,18 @@ class Players extends CI_Model {
             return $data->result_array();
 	}
 
+	public function check_password($which)
+	{
+		$this->db->select('pwhash');
+        $this->db->where('player',$which);
+		
+		$data =  $this->db->get('players')->result_array();
+		
+		// return null if there are no matches
+            if(empty($data))
+                return NULL;
+			
+        // return first and hopefully only record
+        return $data[0]['pwhash'];
+	}
 }

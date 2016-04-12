@@ -1,6 +1,7 @@
 Newest changes at the top
 Format: MM/DD/YYYY HH:MM - comment  
 
+04/11/2016 21:44 - Implemented password check for login
 04/11/2016 16:40 - Made some changes to the error messages
 04/11/2016 16:39 - Added transaction display to the homepage
 04/11/2016 15:33 - Added some error messages
