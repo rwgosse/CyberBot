@@ -88,6 +88,9 @@ class Agent extends CI_Model
     //get the current token
     public function get_token()
     {
+        //fix: refresh the gamestate first
+        $this->gamestate->refresh();
+        
         //grab the latest token from the DB
         return $this->rounds->get($this->gamestate->get_round())['token'];
     }
