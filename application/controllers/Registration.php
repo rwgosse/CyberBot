@@ -20,7 +20,7 @@ class Registration extends Application {
     {
         $this->data['title'] = 'User Registration';
         $this->data['pagebody'] = 'register';
-		print_r($_FILES);
+
 		//if currently in register view then hide the register link
 		if($this->data['pagebody'] == 'register')
 		{
@@ -64,7 +64,7 @@ class Registration extends Application {
 				$this->data['username_message'] = '*User already exists, please try again';
 			}
 		}
-		else if (!empty($this->input->post('password')))
+		else if (!empty($this->input->post('username')))
 		{
 			$this->data['username_visibility'] = 'true';
 			$this->data['username_message'] = '*Username field must be filled in.';
@@ -82,9 +82,9 @@ class Registration extends Application {
 			$config['upload_path'] = './data/uploads/';
 			$config['allowed_types'] = 'jpg|png|jpeg';
 			$config['overwrite'] = TRUE;
-			$config['max_size'] = '2048000'; // Can be set to particular file size , here it is 2 MB(2048 Kb)
-			$config['max_height'] = '768';
-			$config['max_width'] = '1024';
+			$config['max_size'] = '2048'; // Can be set to particular file size , here it is 2 MB(2048 Kb)
+			$config['max_height'] = '50';
+			$config['max_width'] = '50';
 		
 		$this->upload->initialize($config); 
 		$this->load->library('upload', $config);
