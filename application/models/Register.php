@@ -11,6 +11,7 @@ class Register extends CI_Model {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->helper(array('form', 'url'));
 	}
 	
 	public function check_registration($player)
@@ -26,11 +27,15 @@ class Register extends CI_Model {
 	
 	public function register_user($player, $password)
 	{
+		$file_name = $this->upload->data('file_name');
+
+		
 		$data=array(
 		'player'=> $player,
 		'peanuts'=> '200',
 		'adminrole'=> FALSE,
-		'pwhash'=> $this->password_hasher($password) //this is temporary, we need to push the user's pw into the password_hasher() function after that's done
+		'pwhash'=> $this->password_hasher($password), //this is temporary, we need to push the user's pw into the password_hasher() function after that's done
+		'imgpath'=> '/data/uploads/'.$file_name
 		);
 		
 		$this->db->insert('players', $data);
@@ -40,9 +45,35 @@ class Register extends CI_Model {
 	
 	public function password_hasher($password)
 	{
-		
-		$hash = password_hash ( $password , PASSWORD_BCRYPT);
+		//using password_hash to encrpt the password
+		$hash = password_hash ( $password , PASSWORD_DEFAULT);
 		
 		return $hash;
 	}
+	
+//The below section has been moved to the Registration controller because codeigniter user guide demos it
+	
+//	public function do_upload()
+//	{
+//		
+//			$config['upload_path'] = './data/uploads/';
+//			$config['allowed_types'] = 'gif|jpg|png|jpeg|';
+//			$config['overwrite'] = TRUE;
+//			$config['max_size'] = '2048000'; // Can be set to particular file size , here it is 2 MB(2048 Kb)
+//			$config['max_height'] = '768';
+//			$config['max_width'] = '1024';
+//		
+//		
+//		$this->load->library('upload', $config);
+//		
+//		if(!$this->upload->do_upload())
+//		{
+//		$error = array('error' => $this->upload->display_errors());
+//		}
+//		else
+//		{
+//		$data = array('upload_data' => $this->upload->data());
+//		}
+//	}
+	
 }

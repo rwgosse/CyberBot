@@ -56,7 +56,7 @@ a:link {
     padding: 0.5em;
 }
 
-#loginbox > form input[type="text"]
+#loginbox > form input[type="text"], input[type="password"]
 {
     width: 12em;
     font-size: 0.75em;
@@ -349,4 +349,9 @@ a:link {
 	background-color: darkgray;
 	box-shadow:0 0 20px #ffff33;
 	padding-top: 25px;
+}
+
+.register
+{
+	color:red;
 }
