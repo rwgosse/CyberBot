@@ -74,4 +74,13 @@ class Players extends CI_Model {
         // return first and hopefully only record
         return $data[0]['pwhash'];
 	}
+	
+	public function check_admin($which)
+	{
+		$this->db->select('adminrole');
+        $this->db->where('player',$which);
+		$admin =  $this->db->get('players')->result_array();
+		
+		return $admin[0]['adminrole']; 
+	}
 }
