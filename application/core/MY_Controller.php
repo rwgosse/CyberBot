@@ -120,6 +120,7 @@ class Application extends CI_Controller {
             {
                 // if so, display logout button
                 $this->data['login_text'] = 'Hi, ' . $this->session->userdata('username');
+				$this->data['imghide'] = 'initial';
 				$this->data['img'] = $this->session->userdata('username');
                 $this->data['login_submit_text'] = 'Logout';
                 $this->data['login_visibility'] = 'none';
@@ -133,6 +134,7 @@ class Application extends CI_Controller {
                 $this->data['login_submit_text'] = 'Login';
                 $this->data['login_visibility'] = 'initial';
                 $this->data['login_action'] = 'login';
+				$this->data['imghide'] = 'none';
             }
             
             // parse the menu bar
