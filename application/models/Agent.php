@@ -83,7 +83,7 @@ class Agent extends CI_Model
         
         $this->gamestate->refresh();
         $round_num = $this->gamestate->get_round();
-        return !(is_null($this->rounds->get($round_num)));
+        return !(empty($this->rounds->get($round_num))) && !(empty($this->rounds->get($round_num)['token']));
         
     }
     
@@ -109,7 +109,18 @@ class Agent extends CI_Model
     //new for agent-autorun
     public function refresh()
     {
-        echo "AUTORUN!";
+        //refresh gamestate and grab current round
+        $this->gamestate->refresh();        
+        $round_num = $this->gamestate->get_round();
+        
+        if(empty($this->rounds->get($round_num)))
+        {
+            //TODO: handling unknown rounds
+        }
+        else
+        {
+            //TODO: handling known rounds
+        }
     }
     
 
