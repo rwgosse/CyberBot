@@ -129,7 +129,7 @@ class Application extends CI_Controller {
 				$this->data['register_visibility'] = 'none';
 				$this->data['admin_visibility'] = 'none';
 				
-				if ($this->players->check_admin($this->input->get_post('username')) == 1)
+				if ($this->players->check_admin($this->session->userdata['username']) == 1)
 				{
 				$this->data['admin_visibility'] = 'true';
 				}

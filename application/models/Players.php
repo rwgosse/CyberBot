@@ -81,9 +81,6 @@ class Players extends CI_Model {
         $this->db->where('player',$which);
 		$admin =  $this->db->get('players')->result_array();
 		
-		// return null if there are no matches
-            if(empty($data))
-                return NULL;
 			
 		return $admin[0]['adminrole']; 
 	}

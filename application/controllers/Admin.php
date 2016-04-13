@@ -47,7 +47,8 @@ class Admin extends Application {
 
             //display stored tokens from previous rounds
             $this->admin_rounds();
-            
+            //display players in an administrative table
+			$this->administrate_players();
             //renders the page
             $this->render();
 	}
@@ -104,6 +105,19 @@ class Admin extends Application {
         {
             $this->data['rounds'] = $this->rounds->all();
         }
+		        
+	private function administrate_players()
+	{
+		//get all the players from our model
+		$players = $this->players->all();
+		
+		$players_array = array ();
+		foreach ($players as $player)
+		{
+			$players_array[] = (array) $player;
+		}
+		$this->data['adminplayertable'] = $players_array;
+	}
 
 }
 
