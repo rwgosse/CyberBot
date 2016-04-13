@@ -98,15 +98,12 @@ class Agent extends CI_Model
     }
     
     //new functionality for agent-autorun
-    //if the round is closed
-    //  -do nothing
     //if the round is not previously known
     //  -purge data and save it
-    //  -if the status is 2 or 3 (ready or open)
-    //      -also register the agent
+    //  -attempt to register the agent
     //if the round is already known
     //  -if the round is not registered
-    //      -register agent
+    //      -try to register agent (this will automatically fail if the state is incorrect)
     //
     
     //new for agent-autorun

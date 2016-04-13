@@ -18,6 +18,7 @@ class Homepage extends Application {
 		$this->load->model('collections');
                 $this->load->model('transactions');
 		$this->load->model('gamestate');
+                $this->load->model('agent');
 	}
 
 	//-------------------------------------------------------------
@@ -56,6 +57,7 @@ class Homepage extends Application {
             $this->data['round-number'] = $this->gamestate->get_round();
             $this->data['round-state'] = $this->gamestate->get_state();
             $this->data['round-countdown'] = $this->gamestate->get_countdown();
+            $this->data['round-agent'] = $this->agent->is_registered() ? "Registered" : "Not registered";
         }
 
 
