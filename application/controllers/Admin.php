@@ -14,7 +14,7 @@ class Admin extends Application {
 		parent::__construct();
                 $this->load->model('gamestate');
                 $this->load->model('rounds');
-				$this->load->model('players');
+		$this->load->model('players');
                 $this->load->model('agent');
                 $this->load->helper('url');
 	}
@@ -48,14 +48,14 @@ class Admin extends Application {
             //display stored tokens from previous rounds
             $this->admin_rounds();
             //display players in an administrative table
-			$this->administrate_players();
+            $this->administrate_players();
             //renders the page
             $this->render();
 	}
         
         function register()
         {
-            $this->data['title'] = 'Administration';
+            $this->data['title'] = 'Registering Agent';
             $this->data['pagebody'] = 'admin_register';	// this is the view we want shown
 
             //renders the page
@@ -68,18 +68,40 @@ class Admin extends Application {
             redirect('admin', 'refresh');
         }
         
+        function update()
+        {
+            $this->data['title'] = 'Updating Agent';
+            $this->data['pagebody'] = 'admin_register';	// this is the view we want shown
+
+            //renders the page
+            $this->render();
+            
+            //call the update function to actually update the agent
+            $this->update_agent();
+            
+            //redirect back to the admin page            
+            redirect('admin', 'refresh');
+        }
+        
         //check if we're registered and display a nice message if we are or aren't
+        //also fills the registration boxes with pre-existing data
         private function display_register()
         {  
             $this->data['register-status'] = $this->agent->is_registered() ? 'Registered' : 'Not registered';
+            
+            $register_data = $this->agent->get_data();
+            
+            $this->data['register-team'] = $register_data['team'];
+            $this->data['register-name'] = $register_data['name'];
+            $this->data['register-password'] = $register_data['password'];
         }
         
         //TODO: register the agent
         private function register_agent()
         {  
             
-            //TODO: get this from input boxes
-            $team = "A04"; //$this->input->post('team');
+            //get this from input boxes
+            $team = $this->input->post('team');
             $name = $this->input->post('name');
             $password = $this->input->post('password');
             
@@ -89,6 +111,18 @@ class Admin extends Application {
             {
                 $this->data['message'] = 'REGISTERED!';
             }
+            
+            //echo $success;
+        }
+        
+        private function update_agent()
+        {
+            //get this from input boxes
+            $team = $this->input->post('team');
+            $name = $this->input->post('name');
+            $password = $this->input->post('password');
+            
+            $this->agent->update_data($team,$name,$password);
         }
         
         //get the state from the server and display

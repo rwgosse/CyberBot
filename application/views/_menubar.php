@@ -14,8 +14,8 @@
         <input type="text" name="action" value="{login_action}" style="display:none">
 		<input type="password" name="password" placeholder="password" style="display:{login_visibility}">
         <input type="submit" value="{login_submit_text}">
-		<a href="admin/" style="display:{admin_visibility}">Admin</a>
-		<a href="registration/" style="display:{register_visibility}">Click here to Register</a>
+		<a href="admin" style="display:{admin_visibility}">Admin</a>
+		<a href="registration" style="display:{register_visibility}">Click here to Register</a>
     </form>    
 </div>
 <ul class="nav">    

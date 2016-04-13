@@ -16,6 +16,7 @@ class Agent extends CI_Model
         parent::__construct();
         $this->load->model('gamestate');
         $this->load->model('rounds');
+        $this->load->model('players');
         $this->load->library('curl');
     }
     
@@ -42,7 +43,7 @@ class Agent extends CI_Model
         $round = $this->gamestate->get_round();
         if(!($code === 2 || $code === 3))
         {
-            //return FALSE; //disable this check if the server is broken
+            return FALSE; //disable this check if the server is broken
         }
         
         //if we can register, register!
@@ -79,9 +80,11 @@ class Agent extends CI_Model
         //unfortunately we can't ask the server if we are registered so we must make an educated guess with our own data
         //this is problematic because registering is not entirely
         
+        //TODO: we will need to check not only if a row exists but if a key exists
+        
         $this->gamestate->refresh();
         $round_num = $this->gamestate->get_round();
-        return !(is_null($this->rounds->get($round_num)));
+        return !(empty($this->rounds->get($round_num))) && !(empty($this->rounds->get($round_num)['token']));
         
     }
     
@@ -93,6 +96,66 @@ class Agent extends CI_Model
         
         //grab the latest token from the DB
         return $this->rounds->get($this->gamestate->get_round())['token'];
+    }
+    
+    //new functionality for agent-autorun
+    //if the round is not previously known
+    //  -purge data
+    //  -save round
+    //  -attempt to register the agent
+    //if the round is already known
+    //  -if the round is not registered
+    //      -try to register agent (this will automatically fail if the state is incorrect)
+    //
+    
+    //new for agent-autorun
+    public function refresh()
+    {
+        //refresh gamestate and grab current round
+        $this->gamestate->refresh();        
+        $round_num = $this->gamestate->get_round();
+        
+        //TODO: we need to get these from somewhere
+        $team = "A04";
+        $name = "cyberbot_autorun";
+        $password = "tuesday";
+        
+        if(empty($this->rounds->get($round_num)))
+        {
+            //this is an unknown round
+            
+            //save round
+            $this->rounds->add($round_num, NULL);
+            
+            //purge player data (will need to modify player model)
+            $this->players->reset_all();
+            
+            //attempt to register the agent
+            $this->register($team, $name, $password);
+        }
+        else
+        {
+            //this is a known round
+            
+            //attempt to register (the function will run necessary checks)
+            $this->register($team, $name, $password);
+        }
+    }
+    
+    //new db functionality to get stored team, name, and password
+    public function get_data()
+    {
+        $data = $this->db->get('agent');
+            
+        return $data->result_array()[0];
+    }
+    
+    //new db functionality to update stored team, name, and password
+    public function update_data($team,$name,$password)
+    {
+        $data = array('team'=>$team,'name'=>$name,'password'=>$password);
+        
+        $this->db->update('agent', $data);
     }
     
 
