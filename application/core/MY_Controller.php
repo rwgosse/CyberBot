@@ -24,6 +24,7 @@ class Application extends CI_Controller {
 	{
             parent::__construct();
 
+			  $this->load->model('players'); 
             // load parser library
             $this->load->library('parser');
 			//load helpers
@@ -77,7 +78,6 @@ class Application extends CI_Controller {
             else if(!empty($username) && $action === 'login')
             {
                 // if username is not empty, and action is login, check against users
-                $this->load->model('players'); 
 				
                 if($username === $this->players->get(array('player'=>$username))['player'])
                 {
@@ -129,10 +129,10 @@ class Application extends CI_Controller {
 				$this->data['register_visibility'] = 'none';
 				$this->data['admin_visibility'] = 'none';
 				
-				if ($this->players->check_admin($this->session->userdata['username']) == 1)
+				if ($this->players->check_admin($this->input->get_post('username')) == 1)
 				{
 				$this->data['admin_visibility'] = 'true';
-				}	
+				}
             }
             else
             {

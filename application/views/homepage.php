@@ -20,7 +20,8 @@
             <div>
                 {test}
                 <div class="homepage-players">
-                    <a href="/Portfolio?player={player}">{player}</a><br/><br/>
+                    <a href="/Portfolio?player={player}">{player}</a><img src="../data/uploads/{player}.jpg" height="30" width="30" >
+					<br/><br/>
                     Peanuts: {peanuts}<br/><br/>
                     Equity: {equity}<br/>
                 </div>
@@ -43,7 +44,7 @@
                         <td>{datetime}</td>
                         <td>{trans}</td>
                         <td>{broker}</td>
-                        <td>{series}</td>                       
+                        <td>{series}</td> 
                     </tr>               
                 {/transactions}
                 </table>
