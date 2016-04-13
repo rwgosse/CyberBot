@@ -17,6 +17,7 @@ class Homepage extends Application {
 		$this->load->model('players');
                 $this->load->model('series');
 		$this->load->model('collections');
+                $this->load->model('certificates');
                 $this->load->model('transactions');
 		$this->load->model('gamestate');
                 $this->load->model('agent');
@@ -63,7 +64,7 @@ class Homepage extends Application {
         private function welcome_pieces()
         {
             //use the collections::all() method and put it into the allpieces variable
-            $allpieces = $this->collections->distinct_all();
+            $allpieces = $this->certificates->distinct_all();
             $results = ''; 
             foreach ($allpieces as $row)
             {
