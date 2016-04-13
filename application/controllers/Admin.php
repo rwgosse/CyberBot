@@ -14,7 +14,7 @@ class Admin extends Application {
 		parent::__construct();
                 $this->load->model('gamestate');
                 $this->load->model('rounds');
-				$this->load->model('players');
+		$this->load->model('players');
                 $this->load->model('agent');
                 $this->load->helper('url');
 	}
@@ -48,7 +48,7 @@ class Admin extends Application {
             //display stored tokens from previous rounds
             $this->admin_rounds();
             //display players in an administrative table
-			$this->administrate_players();
+            $this->administrate_players();
             //renders the page
             $this->render();
 	}
@@ -111,6 +111,8 @@ class Admin extends Application {
             {
                 $this->data['message'] = 'REGISTERED!';
             }
+            
+            //echo $success;
         }
         
         private function update_agent()

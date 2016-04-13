@@ -8,12 +8,12 @@
     <div id="admin-register">
         <h2>Registration</h2>
         <p id="register-status">Status: {register-status}</p>
-        <form autocomplete="off" method="post" action="register">
-            <label for="team">Team:</label><input type="text" name="team" value="{register-team}" readonly/> <br>
+        <form autocomplete="off" method="post" action="admin/register">
+            <label for="team">Team:</label><input type="text" name="team" value="{register-team}" /> <br>
             <label for="name">Name:</label><input type="text" name="name" value="{register-name}" /> <br>
             <label for="password">Password:</label><input type="text" name="password" value="{register-password}" /> <br>
-            <input type="submit" name="admin/register" value="Force Register"/> <br>
-            <input type="submit" name="admin/update" value="Update Data"/>
+            <button type="submit" name="register" formaction="admin/register">Force Register</button> <br>
+            <button type="submit" name="update" formaction="admin/update">Update Data</button>
         </form>
     </div>
 

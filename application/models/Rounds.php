@@ -42,7 +42,7 @@ class Rounds extends CI_Model {
         {
 
             //check if the round already exists
-            if(empty($this->db->get_where('rounds',array('round'=>$round))))
+            if(empty($this->get($round)))
             {
                 //add a new row
                 $data = array('round'=>$round, 'token'=>$token);
