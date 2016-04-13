@@ -152,7 +152,19 @@ class Admin extends Application {
 		}
 		$this->data['adminplayertable'] = $players_array;
 	}
-
+	
+	//this function should take whatever value the player has in adminrole 
+	//in the db, and reverse its boolean value
+	private function toggle()
+	{
+		//do something
+	}
+	
+	//this function should delete the player of the corresponding row 
+	private function delete()
+	{
+		//do something
+	}
 }
 
 /* End of file Homepage.php */

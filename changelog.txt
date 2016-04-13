@@ -1,6 +1,7 @@
 Newest changes at the top
 Format: MM/DD/YYYY HH:MM - comment  
 
+04/13/2016 15:44 - Updated player mgmt crud view with headers, created code stubs for admin cont.
 04/13/2016 15:26 - Created admin page's player mgmt CRUD controls in admin view
 04/13/2016 14:49 - Agent now gets its data from the right spot (oops)
 04/13/2016 15:29 - Piece and series display on the homepage using server data

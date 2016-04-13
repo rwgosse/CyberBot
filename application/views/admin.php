@@ -37,6 +37,8 @@
 				<th>Peanuts</th>
 				<th>Admin Role</th>
 				<th>Avatar Image Path</th>
+				<th>Toggle Admin Status</th>
+				<th>Delete Player</th>
 			</tr>
 			{adminplayertable}
 			<tr>
@@ -54,12 +56,12 @@
 				</td>
 				<td>
 					<form autocomplete="off" method="post" action="admin/toggle">
-					<button type="submit" name="toggle" formaction="admin/register">Grant/Revoke Admin</button>
+					<button type="submit" name="toggle" formaction="admin/toggle">Grant/Revoke Admin</button>
 					</form>
 				</td>
 				<td>
 					<form autocomplete="off" method="post" action="admin/delete">
-					<button type="submit" name="delete" formaction="admin/register">Delete Player</button>
+					<button type="submit" name="delete" formaction="admin/delete">Delete Player</button>
 					</form>
 				</td>
 			</tr>
