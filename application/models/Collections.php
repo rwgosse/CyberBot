@@ -132,5 +132,11 @@ class Collections extends CI_Model
             
             return $data->result_array();
 	}
+        
+        // delete all collection data
+        public function truncate()
+        {
+            $this->db->truncate('collections'); 
+        }
 	
 }

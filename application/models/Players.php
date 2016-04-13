@@ -88,6 +88,14 @@ class Players extends CI_Model {
         // resets player peanuts and collections
         public function reset_all()
         {
-            //TODO: literally all the functionality
+            //load collections model
+            $this->load->model('collections');
+            
+            // truncate collections table
+            $this->collections->truncate();
+            
+            //reset player peanuts
+            $data = array('peanuts'=>100);
+            $this->db->update('players', $data); 
         }
 }
