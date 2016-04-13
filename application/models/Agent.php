@@ -79,6 +79,8 @@ class Agent extends CI_Model
         //unfortunately we can't ask the server if we are registered so we must make an educated guess with our own data
         //this is problematic because registering is not entirely
         
+        //TODO: we will need to check not only if a row exists but if a key exists
+        
         $this->gamestate->refresh();
         $round_num = $this->gamestate->get_round();
         return !(is_null($this->rounds->get($round_num)));
@@ -93,6 +95,24 @@ class Agent extends CI_Model
         
         //grab the latest token from the DB
         return $this->rounds->get($this->gamestate->get_round())['token'];
+    }
+    
+    //new functionality for agent-autorun
+    //if the round is closed
+    //  -do nothing
+    //if the round is not previously known
+    //  -purge data and save it
+    //  -if the status is 2 or 3 (ready or open)
+    //      -also register the agent
+    //if the round is already known
+    //  -if the round is not registered
+    //      -register agent
+    //
+    
+    //new for agent-autorun
+    public function refresh()
+    {
+        echo "AUTORUN!";
     }
     
 
