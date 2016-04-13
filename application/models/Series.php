@@ -17,29 +17,20 @@ class Series extends CI_Model {
 	// retrieve a single series entry
 	public function get($which)
 	{
-            // get data from the database
-            //$data = $this->db->get_where('series',$which);
-
             // return the first and hopefully only record
             return $this->get_series_where($which)[0];
 	}
         
         // retrieve all matching series
         public function get_all($which)
-        {
-            // get data from the database
-            //$data = $this->db->get_where('series',$which);
-            
+        {           
             // return all records
             return $this->get_series_where($which);
         }
 
 	// retrieve all of the series
 	public function all()
-	{
-            // get data from the database
-            $data = $this->db->get('series');
-            
+	{            
             return $this->get_series_where(NULL);
 	}
 
