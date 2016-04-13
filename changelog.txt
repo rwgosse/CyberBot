@@ -1,6 +1,7 @@
 Newest changes at the top
 Format: MM/DD/YYYY HH:MM - comment  
 
+04/13/2016 11:37 - Added autorun agent and updated administration page to administer it
 04/12/2016 17:57 - Admin page now displays a table of all players (no pwhash)
 04/12/2016 17:02 - Player avatar shows up on the dashboard
 04/12/2016 16:20 - Admin page is now available in menubar for logged-in admin users
