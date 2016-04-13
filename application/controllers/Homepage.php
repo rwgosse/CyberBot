@@ -15,7 +15,9 @@ class Homepage extends Application {
 	{
 		parent::__construct();
 		$this->load->model('players');
+                $this->load->model('series');
 		$this->load->model('collections');
+                $this->load->model('certificates');
                 $this->load->model('transactions');
 		$this->load->model('gamestate');
                 $this->load->model('agent');
@@ -32,14 +34,10 @@ class Homepage extends Application {
 		$this->data['pagebody'] = 'homepage';	// this is the view we want shown
 		// build the list of authors, to pass on to our view
 
-		//use the collections::all() method and put it into the allpieces variable
-		$allpieces = $this->collections->distinct_all();
-		$results = ''; 
-		foreach ($allpieces as $row)
-		{
-			$results .= $this->parser->parse('_homepagecell', $row, true);
-		}	
-		$this->data['piecedisplay'] = $results; 
+                //calls the welcome_series function
+                $this->welcome_series();
+		//calls the welcome_pieces function
+                $this->welcome_pieces();
 		//calls the welcome_players function
 		$this->welcome_players();
                 //calls the welcome_states function
@@ -49,6 +47,31 @@ class Homepage extends Application {
 		//renders the page
 		$this->render();
 	}
+        
+        //get the series from the server and display
+        private function welcome_series()
+        {
+            $results = '';
+            foreach($this->series->all() as $series)
+            {
+                $results .= $this->parser->parse('_seriescell', $series, true);
+            }
+            
+            $this->data['seriesdisplay'] = $results;
+        }
+        
+        //get the pieces from the server and display (doesn't work yet)
+        private function welcome_pieces()
+        {
+            //use the collections::all() method and put it into the allpieces variable
+            $allpieces = $this->certificates->distinct_all();
+            $results = ''; 
+            foreach ($allpieces as $row)
+            {
+                    $results .= $this->parser->parse('_homepagecell', $row, true);
+            }	
+            $this->data['piecedisplay'] = $results; 
+        }
         
         //get the state from the server and display
         private function welcome_states()
