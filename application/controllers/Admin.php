@@ -69,9 +69,13 @@ class Admin extends Application {
         }
         
         //check if we're registered and display a nice message if we are or aren't
+        //also fills the registration boxes with pre-existing data
         private function display_register()
         {  
             $this->data['register-status'] = $this->agent->is_registered() ? 'Registered' : 'Not registered';
+            $this->data['register-team'] = "A04";
+            $this->data['register-name'] = "cyberbot_fixed";
+            $this->data['register-password'] = "tuesday";
         }
         
         //TODO: register the agent

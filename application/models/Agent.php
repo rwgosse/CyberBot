@@ -128,7 +128,7 @@ class Agent extends CI_Model
             $this->rounds->add($round_num, NULL);
             
             //purge player data (will need to modify player model)
-            $this->player->reset_all();
+            $this->players->reset_all();
             
             //attempt to register the agent
             $this->register($team, $name, $password);
