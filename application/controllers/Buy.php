@@ -3,7 +3,7 @@
 /* 
  * Buy controller
  * controllers/Buy.php
- * May move this to the homepage controller
+ * May move this to the homepage or portfolio controller
  * 
  * 
  */

@@ -51,7 +51,7 @@ class Purchase extends CI_Model
                     'datetime' => $timestamp
                      );
                     $this->db->insert('collections', $data);// insert into database
-                    echo 'inserted:' . (string)$certificate->piece . '</br>' ;
+                    //echo 'inserted:' . (string)$certificate->piece . '</br>' ;
 
 
                 }
@@ -60,7 +60,7 @@ class Purchase extends CI_Model
             else 
             {
                  //team, token or player variable null or empty
-                 echo 'team, token or player not set, or the agent may not be registered.';
+                 //echo 'team, token or player not set, or the agent may not be registered.';
                  return false;
             }
         }
@@ -68,14 +68,14 @@ class Purchase extends CI_Model
         {
            
             //game not open
-            echo 'status code: ' . $this->gamestate->get_code() . '</br>';
+            //echo 'status code: ' . $this->gamestate->get_code() . '</br>';
            if ($this->agent->is_registered()) //doesnt work...
             {
-                echo 'Registered: true';
+               // echo 'Registered: true';
             }
             else 
                 {
-                    echo 'Registered: false';
+                   // echo 'Registered: false';
                   
                 }
             return false;
