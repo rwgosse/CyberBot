@@ -52,6 +52,16 @@
 				<td>
 					{imgpath}
 				</td>
+				<td>
+					<form autocomplete="off" method="post" action="admin/toggle">
+					<button type="submit" name="toggle" formaction="admin/register">Grant/Revoke Admin</button>
+					</form>
+				</td>
+				<td>
+					<form autocomplete="off" method="post" action="admin/delete">
+					<button type="submit" name="delete" formaction="admin/register">Delete Player</button>
+					</form>
+				</td>
 			</tr>
 		{/adminplayertable}
 		</table>
