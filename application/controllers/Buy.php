@@ -3,7 +3,7 @@
 /* 
  * Buy controller
  * controllers/Buy.php
- * 
+ * May move this to the homepage controller
  * 
  * 
  */
@@ -43,10 +43,13 @@ class Buy extends Application {
             $player =  $this->session->userdata('username'); // current playername stored in session data
            // echo $player;
             $success = $this->purchase->purchase($team,$token,$player); 
-            
-            if($success)
+            if ($success)
             {
-                echo 'inserted';   
+                echo 'Cards successfully purchased.';
+            }
+            else 
+            {
+                echo 'Failed to purchase cards';
             }
             
             

@@ -30,8 +30,7 @@ class Purchase extends CI_Model
        //is the game status open?
         $this->gamestate->refresh();
         $code = $this->gamestate->get_code(); // 3 represents open
-        
-        if ($code == 3) // &&  $this->agent->is_registered() )
+        if ($code == 3 ) //&&  $this->agent->is_registered() )
         {
             //echo $team . $token . $player;
             if(!empty($team) && !empty($token) && !empty($player)) //verify parameters
@@ -56,11 +55,13 @@ class Purchase extends CI_Model
 
 
                 }
+                return true;
             }
             else 
             {
                  //team, token or player variable null or empty
-                 echo 'team, token or player not set!';
+                 echo 'team, token or player not set, or the agent may not be registered.';
+                 return false;
             }
         }
         else 
@@ -68,15 +69,16 @@ class Purchase extends CI_Model
            
             //game not open
             echo 'status code: ' . $this->gamestate->get_code() . '</br>';
-//           if ($this->agent->is_registered())
-//            {
-//                echo 'Registered: true';
-//            }
-//            else 
-//                {
-//                    echo 'Registered: false';
-//                }
-            
+           if ($this->agent->is_registered()) //doesnt work...
+            {
+                echo 'Registered: true';
+            }
+            else 
+                {
+                    echo 'Registered: false';
+                  
+                }
+            return false;
             
         }
         
