@@ -5,7 +5,7 @@
 ?>
 <h2>Cyberbots Web App</h2>
 <div id="loginbox">
-	<div style="display:{imghide}"><img src="../data/uploads/{img}.jpg" alt="{img}" /> </div>
+	<div style="display:{imghide}"><img src="../data/uploads/{img}.jpg" alt="{img}" height="60" width="60"/> </div>
     <div id="loginmessage">{login_message}</div>
     <span id="logintext">{login_text}</span>
 	

@@ -73,7 +73,7 @@ class Homepage extends Application {
 		}
 		$this->data['test'] = $players_array; 
 	}
-        
+
         //get the transactions from the server and display
         private function welcome_transactions()
         {

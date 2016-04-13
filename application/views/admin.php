@@ -27,4 +27,32 @@
         <h2>Information</h2>
         <p>{message}</p>
     </div>
+	
+	    <div id="admin-player-mgmt">
+        <h2>Player Management</h2>
+		<table id="admin-players">
+			<tr>
+				<th>Player Name</th>
+				<th>Peanuts</th>
+				<th>Admin Role</th>
+				<th>Avatar Image Path</th>
+			</tr>
+			{adminplayertable}
+			<tr>
+				<td>
+					{player}
+				</td>
+				<td>
+					{peanuts}
+				</td>
+				<td>
+					{adminrole}
+				</td>
+				<td>
+					{imgpath}
+				</td>
+			</tr>
+		{/adminplayertable}
+		</table>
+    </div>
 </div>
