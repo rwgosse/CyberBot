@@ -16,7 +16,7 @@ class Agent extends CI_Model
         parent::__construct();
         $this->load->model('gamestate');
         $this->load->model('rounds');
-        $this->load->model('player');
+        $this->load->model('players');
         $this->load->library('curl');
     }
     
@@ -100,7 +100,8 @@ class Agent extends CI_Model
     
     //new functionality for agent-autorun
     //if the round is not previously known
-    //  -purge data and save it
+    //  -purge data
+    //  -save round
     //  -attempt to register the agent
     //if the round is already known
     //  -if the round is not registered
@@ -122,6 +123,9 @@ class Agent extends CI_Model
         if(empty($this->rounds->get($round_num)))
         {
             //this is an unknown round
+            
+            //save round
+            $this->rounds->add($round_num, NULL);
             
             //purge player data (will need to modify player model)
             $this->player->reset_all();
