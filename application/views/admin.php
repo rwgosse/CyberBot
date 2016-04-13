@@ -8,7 +8,7 @@
     <div id="admin-register">
         <h2>Registration</h2>
         <p id="register-status">Status: {register-status}</p>
-        <form autocomplete="off" method="post" action="admin/register">
+        <form autocomplete="off" method="post" action="register">
             <label for="team">Team:</label><input type="text" name="team" value="A04" readonly/> <br>
             <label for="name">Name:</label><input type="text" name="name" value="cyberbot" /> <br>
             <label for="password">Password:</label><input type="text" name="password" /> <br>
