@@ -16,6 +16,7 @@ class Agent extends CI_Model
         parent::__construct();
         $this->load->model('gamestate');
         $this->load->model('rounds');
+        $this->load->model('player');
         $this->load->library('curl');
     }
     
@@ -113,13 +114,27 @@ class Agent extends CI_Model
         $this->gamestate->refresh();        
         $round_num = $this->gamestate->get_round();
         
+        //TODO: we need to get these from somewhere
+        $team = "A04";
+        $name = "cyberbot_autorun";
+        $password = "tuesday";
+        
         if(empty($this->rounds->get($round_num)))
         {
-            //TODO: handling unknown rounds
+            //this is an unknown round
+            
+            //purge player data (will need to modify player model)
+            $this->player->reset_all();
+            
+            //attempt to register the agent
+            $this->register($team, $name, $password);
         }
         else
         {
-            //TODO: handling known rounds
+            //this is a known round
+            
+            //attempt to register (the function will run necessary checks)
+            $this->register($team, $name, $password);
         }
     }
     

@@ -84,4 +84,10 @@ class Players extends CI_Model {
 			
 		return $admin[0]['adminrole']; 
 	}
+        
+        // resets player peanuts and collections
+        public function reset_all()
+        {
+            //TODO: literally all the functionality
+        }
 }
