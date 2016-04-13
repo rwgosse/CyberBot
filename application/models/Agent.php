@@ -142,6 +142,22 @@ class Agent extends CI_Model
         }
     }
     
+    //new db functionality to get stored team, name, and password
+    public function get_data()
+    {
+        $data = $this->db->get('agent');
+            
+        return $data->result_array()[0];
+    }
+    
+    //new db functionality to update stored team, name, and password
+    public function update_data($team,$name,$password)
+    {
+        $data = array('team'=>$team,'name'=>$name,'password'=>$password);
+        
+        $this->db->update('agent', $data);
+    }
+    
 
 
 }

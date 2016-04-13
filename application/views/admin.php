@@ -12,8 +12,8 @@
             <label for="team">Team:</label><input type="text" name="team" value="{register-team}" readonly/> <br>
             <label for="name">Name:</label><input type="text" name="name" value="{register-name}" /> <br>
             <label for="password">Password:</label><input type="text" name="password" value="{register-password}" /> <br>
-            <input type="submit" name="register" value="Force Register"/>
-            <input type="submit" name="update" value="Update Data"/>
+            <input type="submit" name="admin/register" value="Force Register"/> <br>
+            <input type="submit" name="admin/update" value="Update Data"/>
         </form>
     </div>
 
