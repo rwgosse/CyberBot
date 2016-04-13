@@ -116,9 +116,10 @@ class Agent extends CI_Model
         $round_num = $this->gamestate->get_round();
         
         //TODO: we need to get these from somewhere
-        $team = "A04";
-        $name = "cyberbot_autorun";
-        $password = "tuesday";
+        $data = $this->get_data();
+        $team = $data['team'];
+        $name = $data['name'];
+        $password = $data['password'];
         
         if(empty($this->rounds->get($round_num)))
         {
