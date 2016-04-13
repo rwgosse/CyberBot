@@ -32,7 +32,7 @@ class Register extends CI_Model {
 		
 		$data=array(
 		'player'=> $player,
-		'peanuts'=> '200',
+		'peanuts'=> '100',
 		'adminrole'=> FALSE,
 		'pwhash'=> $this->password_hasher($password), //this is temporary, we need to push the user's pw into the password_hasher() function after that's done
 		'imgpath'=> '/data/uploads/'.$file_name

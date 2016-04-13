@@ -3,12 +3,17 @@
         <h3>Game Status: Round #{round-number}</h3>
         <p>Round state: {round-state}</p>
         <p>Time left: {round-countdown}</p>
+        <p>Agent: {round-agent}</p>
     </div>
     
     <div id="content-container">        
 
         <div id="content-left">
             <h3>Pieces</h3>
+            <div id="homepage-series">
+                <h4>Known Series</h4>
+                {seriesdisplay}
+            </div>            
             <div id="homepage-pieces">
                 <h4>Known Pieces</h4>
                 {piecedisplay}
@@ -28,7 +33,7 @@
                 {/test}
             </div>
             
-            <h3>Transactions</h3>
+            <h3 style="clear:both;">Transactions</h3>
             <div id="homepage-transactions">
                 <table>
                     <tr>

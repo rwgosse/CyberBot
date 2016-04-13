@@ -9,10 +9,11 @@
         <h2>Registration</h2>
         <p id="register-status">Status: {register-status}</p>
         <form autocomplete="off" method="post" action="admin/register">
-            <label for="team">Team:</label><input type="text" name="team" value="A04" readonly/> <br>
-            <label for="name">Name:</label><input type="text" name="name" value="cyberbot" /> <br>
-            <label for="password">Password:</label><input type="text" name="password" /> <br>
-            <input type="submit" value="Register"/>
+            <label for="team">Team:</label><input type="text" name="team" value="{register-team}" /> <br>
+            <label for="name">Name:</label><input type="text" name="name" value="{register-name}" /> <br>
+            <label for="password">Password:</label><input type="text" name="password" value="{register-password}" /> <br>
+            <button type="submit" name="register" formaction="admin/register">Force Register</button> <br>
+            <button type="submit" name="update" formaction="admin/update">Update Data</button>
         </form>
     </div>
 
@@ -36,6 +37,8 @@
 				<th>Peanuts</th>
 				<th>Admin Role</th>
 				<th>Avatar Image Path</th>
+				<th>Toggle Admin Status</th>
+				<th>Delete Player</th>
 			</tr>
 			{adminplayertable}
 			<tr>
@@ -50,6 +53,16 @@
 				</td>
 				<td>
 					{imgpath}
+				</td>
+				<td>
+					<form autocomplete="off" method="post" action="admin/toggle">
+					<button type="submit" name="toggle" formaction="admin/toggle">Grant/Revoke Admin</button>
+					</form>
+				</td>
+				<td>
+					<form autocomplete="off" method="post" action="admin/delete">
+					<button type="submit" name="delete" formaction="admin/delete">Delete Player</button>
+					</form>
 				</td>
 			</tr>
 		{/adminplayertable}

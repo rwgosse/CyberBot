@@ -89,7 +89,7 @@ class Transactions extends CI_Model {
                 //grab the date and format (crude fix for a server-side change)
                 $date = date(DATE_ATOM, $line[1]);
                 
-                $transaction = array('transaction_id'=>$line[0],$date,'broker'=>$line[2],'player'=>$line[3],'series'=>$line[4],'trans'=>$line[5]);
+                $transaction = array('transaction_id'=>$line[0],'datetime'=>$date,'broker'=>$line[2],'player'=>$line[3],'series'=>$line[4],'trans'=>$line[5]);
                 
                 //check conditions if $which is not empty
                 if(!empty($which))
