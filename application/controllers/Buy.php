@@ -43,14 +43,7 @@ class Buy extends Application {
             $player =  $this->session->userdata('username'); // current playername stored in session data
            // echo $player;
             $success = $this->purchase->purchase($team,$token,$player); 
-            if ($success)
-            {
-                echo 'Cards successfully purchased.';
-            }
-            else 
-            {
-                echo 'Failed to purchase cards';
-            }
+            echo $success;
             
             
             

@@ -84,6 +84,31 @@ class Players extends CI_Model
 
 		return $admin[0]['adminrole'];
 	}
+        
+        
+        function get_peanuts($player)
+        {
+            $this->db->select('peanuts');
+            $this->db->from('players');
+            $this->db->where('player', $player);
+            $query = $this->db->get();
+            if ( $query->num_rows() > 0 )
+                {
+                    $row = $query->row_array();
+                    return $row['peanuts'];
+                }
+        }
+        
+        function update_peanuts($player, $peanuts)
+        {
+            $data = array(
+               'peanuts' => $peanuts,
+            );
+
+             $this->db->where('player', $player);
+             $this->db->update('players', $data);
+            
+        }
 
 	// resets player peanuts and collections
 	public function reset_all() 

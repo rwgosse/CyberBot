@@ -45,7 +45,7 @@ class Portfolio extends Application {
         }
         else 
             {
-            $this->data['buy_response'] = "no data";
+            $this->data['buy_response'] = "";
             }
         $this->render();
     }
@@ -139,22 +139,13 @@ class Portfolio extends Application {
             
             //TODO: 
             $team = "A04"; // team name
-            //$token = $this->agent->get_token(); // token, team must have been registered
-            $token = '420b6631881d8de28f1bc51e287c8c91'; // force enter token for debug porpoises
+            $token = $this->agent->get_token(); // token, team must have been registered
+            //'420b6631881d8de28f1bc51e287c8c91'; // force enter token for debug porpoises
             //$player = 'Richard';
             $player =  $this->session->userdata('username'); // current playername stored in session data
            // echo $player;
             $success = $this->purchase->purchase($team,$token,$player); 
-            if ($success)
-            {
-               $buy_message = "Successfully Purchased Cards";
-      
-            }
-            else 
-            {
-                $buy_message = "Failed to purchase cards, Check game/server status";
-                
-            }
+            $buy_message = $success;
             $this->session->set_flashdata('last_buy', $buy_message);
             redirect('portfolio');
             

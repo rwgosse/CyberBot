@@ -1,6 +1,8 @@
 Newest changes at the top
 Format: MM/DD/YYYY HH:MM - comment  
 
+
+04/14/2016 13:26 - Buying Cards working, tracks peanuts usage against database.
 04/14/2016 12:10 - Added function to admin page that purges known rounds
 04/13/2016 20:45 - Update player to admin function now working
 04/13/2016 17:49 - Delete player function now works in admin page

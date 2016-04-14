@@ -13,7 +13,6 @@
             
             
             <div id="buy-container">
-                
                 <form autocomplete="off" method="post" action="portfolio/buy_cards">
                     <input type="submit" value="Purchase Cards"/>
                 </form>
