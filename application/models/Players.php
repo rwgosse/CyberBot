@@ -98,4 +98,28 @@ class Players extends CI_Model {
             $data = array('peanuts'=>100);
             $this->db->update('players', $data); 
         }
+        
+        function get_peanuts($player)
+        {
+            $this->db->select('peanuts');
+            $this->db->from('players');
+            $this->db->where('player', $player);
+            $query = $this->db->get();
+            if ( $query->num_rows() > 0 )
+                {
+                    $row = $query->row_array();
+                    return $row['peanuts'];
+                }
+        }
+        
+        function update_peanuts($player, $peanuts)
+        {
+            $data = array(
+               'peanuts' => $peanuts,
+            );
+
+             $this->db->where('player', $player);
+             $this->db->update('players', $data);
+            
+        }
 }
