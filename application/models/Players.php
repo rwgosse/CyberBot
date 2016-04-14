@@ -98,4 +98,13 @@ class Players extends CI_Model {
             $data = array('peanuts'=>100);
             $this->db->update('players', $data); 
         }
+		
+		//deletes a specific player in the players table
+		public function delete_player($which)
+		{
+			//$this->db->where('player', $which);
+			//$this->db->delete('players');
+			
+			$this->db->delete('players', array('player' => $which));
+		}
 }

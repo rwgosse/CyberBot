@@ -14,7 +14,7 @@ class Admin extends Application {
 		parent::__construct();
                 $this->load->model('gamestate');
                 $this->load->model('rounds');
-		$this->load->model('players');
+				$this->load->model('players');
                 $this->load->model('agent');
                 $this->load->helper('url');
 	}
@@ -160,10 +160,25 @@ class Admin extends Application {
 		//do something
 	}
 	
-	//this function should delete the player of the corresponding row 
-	private function delete()
+	//this function should delete the player of the corresponding row in the
+	//player management table
+	function delete()
 	{
-		//do something
+		$this->load->model('players');
+		$this->data['title'] = 'Deleting Player';
+        $this->data['pagebody'] = 'admin_deleteplayer';	// this is the view we want shown
+		
+		//call the deleteplayer() function
+		$this->deleteplayer();
+		
+		redirect('admin', 'refresh');
+	}
+	
+	private function deleteplayer()
+	{
+		$player = $this->input->post('deleteplayer');
+		
+		$this->players->delete_player($player);
 	}
 }
 
