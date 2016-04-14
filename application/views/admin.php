@@ -22,6 +22,9 @@
         {rounds}
         <p>Round {round}: {token}</p>
         {/rounds}
+        <form autocomplete="off" method="post" action="admin/purge">
+            <button type="submit" name="purge">Purge Known Rounds</button>            
+        </form>
     </div>
 
     <div id="admin-info">

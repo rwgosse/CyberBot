@@ -81,6 +81,20 @@ class Admin extends Application
 		//redirect back to the admin page            
 		redirect('admin', 'refresh');
 	}
+        
+        function purge()
+        {
+                $this->data['title'] = 'Purging Agent';
+		$this->data['pagebody'] = 'admin_register'; // this is the view we want shown
+		//renders the page
+		$this->render();
+
+		//purge rounds through the rounds model
+		$this->rounds->truncate();
+
+		//redirect back to the admin page            
+		redirect('admin', 'refresh');
+        }
 
 	//check if we're registered and display a nice message if we are or aren't
 	//also fills the registration boxes with pre-existing data
@@ -95,7 +109,7 @@ class Admin extends Application
 		$this->data['register-password'] = $register_data['password'];
 	}
 
-	//TODO: register the agent
+	//register the agent
 	private function register_agent() 
 	{
 		//get this from input boxes
