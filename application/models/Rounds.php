@@ -57,5 +57,11 @@ class Rounds extends CI_Model {
             }
             
         }
+        
+        // purge the rounds table of known rounds
+        public function truncate()
+        {
+            $this->db->truncate('rounds');
+        }
 
 }
