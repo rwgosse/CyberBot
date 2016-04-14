@@ -10,6 +10,15 @@
 	</form>
 
 	<div id="content-container">
+            
+            
+            <div id="buy-container">
+                
+                <form autocomplete="off" method="post" action="portfolio/buy_cards">
+                    <input type="submit" value="Purchase Cards"/>
+                </form>
+                {buy_response}
+            </div> 
 
 		<div id="content-left">
 

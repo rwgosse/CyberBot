@@ -179,6 +179,11 @@ form input[type="text"], input[type="password"]
 
 /* CSS for portfolio page */
 
+#buy-container
+{
+    
+}
+
 #portfolio-wrapper
 {
 	background-color: darkgray;

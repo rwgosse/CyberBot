@@ -5,7 +5,7 @@
         <p>Time left: {round-countdown}</p>
         <p>Agent: {round-agent}</p>
     </div>
-
+    
     <div id="content-container">        
 
         <div id="content-left">

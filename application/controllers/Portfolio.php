@@ -15,6 +15,11 @@ class Portfolio extends Application {
             $this->load->model('players');
             $this->load->model('collections');
             $this->load->model('transactions');
+            $this->load->model('purchase');
+            $this->load->model('gamestate');
+            $this->load->model('agent');
+            $this->load->helper('form');
+            $this->load->library('session');
     }
 
     //-------------------------------------------------------------
@@ -23,10 +28,31 @@ class Portfolio extends Application {
 
     function index()
     {   
+        $this->render_page();
+    }
+    
+    function render_page() 
+    {
         $this->data['title'] = 'Player Portfolio';
         $this->data['pagebody'] = 'portfolio';
-        
-        // get list of players
+        $this->player_prep();      
+        $this->create_holdings_pane();
+        $this->create_activity_pane(); 
+        if (!empty($this->session->flashdata('last_buy')))
+        {
+            $buy_message = $this->session->flashdata('last_buy');
+            $this->data['buy_response'] = $buy_message;
+        }
+        else 
+            {
+            $this->data['buy_response'] = "no data";
+            }
+        $this->render();
+    }
+
+    function player_prep()
+    {
+         // get list of players
         $players_records = $this->players->all();
         
         //get player from GET, get player from session if it doesn't exist, default to first known player
@@ -57,13 +83,9 @@ class Portfolio extends Application {
             $players[] = (array) $record;
         }
         $this->data['players'] = $players;
-        
-        $this->create_holdings_pane();
-        $this->create_activity_pane();
-        
-        $this->render();
     }
-
+    
+    
     function create_holdings_pane()
     {
         $data_pieces = $this->collections->get_pieces(array('player'=>$this->player));
@@ -106,6 +128,41 @@ class Portfolio extends Application {
         }
         $this->data['sales'] = $sales;
     }
+    
+    function buy_cards()
+        {  
+            //team: your team code 'A04'
+            // token: your agent authentication token
+            // player: the name of your player 
+          
+            
+            
+            //TODO: 
+            $team = "A04"; // team name
+            //$token = $this->agent->get_token(); // token, team must have been registered
+            $token = '420b6631881d8de28f1bc51e287c8c91'; // force enter token for debug porpoises
+            //$player = 'Richard';
+            $player =  $this->session->userdata('username'); // current playername stored in session data
+           // echo $player;
+            $success = $this->purchase->purchase($team,$token,$player); 
+            if ($success)
+            {
+               $buy_message = "Successfully Purchased Cards";
+      
+            }
+            else 
+            {
+                $buy_message = "Failed to purchase cards, Check game/server status";
+                
+            }
+            $this->session->set_flashdata('last_buy', $buy_message);
+            redirect('portfolio');
+            
+            
+            
+        }
+    
+
 }
 
 /* End of file Portfolio.php */
