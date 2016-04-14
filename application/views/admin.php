@@ -57,11 +57,13 @@
 				<td>
 					<form autocomplete="off" method="post" action="admin/toggle">
 					<button type="submit" name="toggle" formaction="admin/toggle">Grant/Revoke Admin</button>
+					
 					</form>
 				</td>
 				<td>
 					<form autocomplete="off" method="post" action="admin/delete">
-					<button type="submit" name="delete" formaction="admin/delete">Delete Player</button>
+					<input type="hidden" name="deleteplayer" value="{player}" />
+					<button type="submit" name="delete" formaction="admin/delete">Delete</button>
 					</form>
 				</td>
 			</tr>
