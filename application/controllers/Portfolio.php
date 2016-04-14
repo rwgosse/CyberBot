@@ -59,6 +59,7 @@ class Portfolio extends Application {
         if($this->input->get('player'))
         {
             $this->player = $this->input->get('player');
+			$this->data['name'] = $this->input->get('player');
         }
         else if($this->session->userdata('username'))
         {
@@ -79,7 +80,6 @@ class Portfolio extends Application {
             {
                 $record['selected'] = 'selected="selected"';
             }
-            
             $players[] = (array) $record;
         }
         $this->data['players'] = $players;
@@ -134,9 +134,7 @@ class Portfolio extends Application {
             //team: your team code 'A04'
             // token: your agent authentication token
             // player: the name of your player 
-          
-            
-            
+
             //TODO: 
             $team = "A04"; // team name
             $token = $this->agent->get_token(); // token, team must have been registered

@@ -6,7 +6,8 @@
  *
  * ------------------------------------------------------------------------
  */
-class Registration extends Application {
+class Registration extends Application 
+{
 
     function __construct()
     {
@@ -88,7 +89,7 @@ class Registration extends Application {
 	public function do_upload()
 	{
 		$config['upload_path'] = './data/uploads/';
-		$config['allowed_types'] = 'jpg|png|jpeg';
+		$config['allowed_types'] = 'jpg';
 		$config['overwrite'] = TRUE;
 		$config['max_size'] = '2048'; // Can be set to particular file size , here it is 2 MB(2048 Kb)
 		$config['max_height'] = '160';
