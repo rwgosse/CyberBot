@@ -45,7 +45,7 @@ class Portfolio extends Application {
         }
         else 
             {
-            $this->data['buy_response'] = "no data";
+            $this->data['buy_response'] = "";
             }
         $this->render();
     }
