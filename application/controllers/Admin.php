@@ -197,12 +197,12 @@ class Admin extends Application
 		$this->data['title'] = 'Deleting Player';
 		$this->data['pagebody'] = 'admin_deleteplayer'; // this is the view we want shown
 		//call the deleteplayer() function
-		$this->deleteplayer();
+		$this->delete_player();
 
 		redirect('admin', 'refresh');
 	}
 
-	private function deleteplayer() 
+	private function delete_player() 
 	{
 		$player = $this->input->post('deleteplayer');
 
