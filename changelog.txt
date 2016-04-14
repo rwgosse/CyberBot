@@ -3,6 +3,8 @@ Format: MM/DD/YYYY HH:MM - comment
 
 
 04/14/2016 13:26 - Buying Cards working, tracks peanuts usage against database.
+04/13/2016 20:45 - Update player to admin function now working
+04/13/2016 17:49 - Delete player function now works in admin page
 04/13/2016 16:20 - Working on rendering of buying cards
 04/13/2016 15:44 - Updated player mgmt crud view with headers, created code stubs for admin cont.
 04/13/2016 15:26 - Created admin page's player mgmt CRUD controls in admin view

@@ -28,8 +28,8 @@
         <h2>Information</h2>
         <p>{message}</p>
     </div>
-	
-	    <div id="admin-player-mgmt">
+
+	<div id="admin-player-mgmt">
         <h2>Player Management</h2>
 		<table id="admin-players">
 			<tr>
@@ -56,16 +56,19 @@
 				</td>
 				<td>
 					<form autocomplete="off" method="post" action="admin/toggle">
-					<button type="submit" name="toggle" formaction="admin/toggle">Grant/Revoke Admin</button>
+						<input type="text" name="player" value="{player}" style="display: none" />
+						<input type="text" name="role" value="{adminrole}" style="display: none" />
+						<button type="submit" name="toggle" formaction="admin/toggle">Grant/Revoke Admin</button>
 					</form>
 				</td>
 				<td>
 					<form autocomplete="off" method="post" action="admin/delete">
-					<button type="submit" name="delete" formaction="admin/delete">Delete Player</button>
+						<input type="hidden" name="deleteplayer" value="{player}" />
+						<button type="submit" name="delete" formaction="admin/delete">Delete</button>
 					</form>
 				</td>
 			</tr>
-		{/adminplayertable}
+			{/adminplayertable}
 		</table>
     </div>
 </div>
