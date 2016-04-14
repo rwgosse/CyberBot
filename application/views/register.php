@@ -12,7 +12,7 @@
 						<td><input type="password" name="password" placeholder="password"><div class="register" style="display:{password_visibility}">{password_message}</div></td>
 					</tr>
 					<tr>
-						<td>Upload avatar: </td>
+						<td>Upload avatar: <i>(max: 160px by 160px and .jpg only)</i></td>
 						<td><input type="file" name="userfile" size="20" /><div class="register" style="display:{avatar_visibility}">{avatar_message}</div></td>
 					</tr>
 					<tr>
